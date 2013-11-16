@@ -4,7 +4,7 @@
   "longName": "chomps",
   "companyName": "The Hybrid Group",
   "versionCode": 1,
-  "versionLabel": "1.0.0",
+  "versionLabel": "0.0.1",
   "watchapp": {
     "watchface": false
   },
