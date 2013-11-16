@@ -68,10 +68,10 @@ static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
 
-  message_layer = text_layer_create(GRect(0, 95, 144, 68));
+  message_layer = text_layer_create(GRect(0, 0, 150, 140));
   text_layer_set_text_color(message_layer, GColorBlack);
   text_layer_set_background_color(message_layer, GColorClear);
-  text_layer_set_font(message_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
+  text_layer_set_font(message_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
   text_layer_set_text_alignment(message_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(message_layer));
 
