@@ -5,7 +5,7 @@ function fetchMessage() {
   req.onload = function(e) {
     if (req.readyState == 4) {
       if(req.status == 200) {
-        var response = JSON.parse(req.responseText);
+        response = JSON.parse(req.responseText);
         var message = response.result.toString();
         Pebble.sendAppMessage({
           "message": message
@@ -14,7 +14,7 @@ function fetchMessage() {
         console.log("Error");
       }
     }
-  }
+  };
   req.send(null);
 }
 
