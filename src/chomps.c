@@ -3,16 +3,17 @@
 static Window *window;
 static TextLayer *message_layer;
 static char symbol[5];
-static char message[10];
 
 enum {
   QUOTE_KEY_MESSAGE = 0x1,
   QUOTE_KEY_FETCH = 0x2,
 };
 
-static void fetch_msg(void) {
+static void send_event_msg(char *message) {
+  char *data;
+  
   Tuplet fetch_tuple = TupletInteger(QUOTE_KEY_FETCH, 1);
-  Tuplet message_tuple = TupletInteger(QUOTE_KEY_MESSAGE, 1);
+  Tuplet message_tuple = TupletCString(QUOTE_KEY_MESSAGE, message);
 
   DictionaryIterator *iter;
   app_message_outbox_begin(&iter);
@@ -29,13 +30,21 @@ static void fetch_msg(void) {
 }
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
-  // refresh
-  text_layer_set_text(message_layer, "Loading...");
-  fetch_msg();
+  send_event_msg("select");
+}
+
+static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
+  send_event_msg("up");
+}
+ 
+static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
+  send_event_msg("down");
 }
 
 static void click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler);
+  window_single_click_subscribe(BUTTON_ID_UP, up_click_handler);
+  window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler);
 }
 
 static void in_received_handler(DictionaryIterator *iter, void *context) {
@@ -61,7 +70,6 @@ static void app_message_init(void) {
   app_message_register_outbox_failed(out_failed_handler);
   // Init buffers
   app_message_open(64, 64);
-  fetch_msg();
 }
 
 static void window_load(Window *window) {
@@ -74,8 +82,6 @@ static void window_load(Window *window) {
   text_layer_set_font(message_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
   text_layer_set_text_alignment(message_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(message_layer));
-
-  fetch_msg();
 }
 
 static void window_unload(Window *window) {
@@ -102,7 +108,7 @@ int main(void) {
   init();
 
   APP_LOG(APP_LOG_LEVEL_DEBUG, "Done initializing, pushed window: %p", window);
-
+  
   app_event_loop();
   deinit();
 }
