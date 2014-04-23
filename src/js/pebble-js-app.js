@@ -3,7 +3,7 @@ function publishEvent(data) {
   var host    = localStorage.host;
   var port    = localStorage.port;
   
-  var baseUrl = "http://" + host + ":" + port + "/robots/" + name;
+  var baseUrl = host + ":" + port + "/robots/" + name;
   var publish = "/devices/pebble/commands/publish_event";
   var params  = '{"name":"button", "data":"' + data + '"}';
   
