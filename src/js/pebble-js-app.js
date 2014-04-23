@@ -6,13 +6,10 @@ function publishEvent(data) {
   var baseUrl = host + ":" + port + "/robots/" + name;
   var publish = "/devices/pebble/commands/publish_event";
   var params  = '{"name":"button", "data":"' + data + '"}';
-  
   var req = new XMLHttpRequest();
-  req.open('POST', baseUrl + publish, true);
   
-  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  req.setRequestHeader("Content-length", params.length);
-  req.setRequestHeader("Connection", "close");
+  req.open('POST', baseUrl + publish, true);
+  req.setRequestHeader("Content-type", "application/json");
   req.send(params);
 }
 
