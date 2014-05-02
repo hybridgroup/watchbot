@@ -2,19 +2,21 @@ function publishEvent(data) {
   var name    = localStorage.name;
   var host    = localStorage.host;
   var port    = localStorage.port;
-  
+  var device  = localStorage.device;
+  var command = localStorage.command;
+
   var baseUrl = host + ":" + port + "/robots/" + name;
-  var publish = "/devices/pebble/commands/publish_event";
+  var publish = "/devices/"+ device +"/commands/" + command;
   var params  = '{"name":"button", "data":"' + data + '"}';
   var req = new XMLHttpRequest();
-  
+
   req.open('POST', baseUrl + publish, true);
   req.setRequestHeader("Content-type", "application/json");
   req.send(params);
 }
 
 Pebble.addEventListener("ready", function(e) {
-  
+
   if (!!localStorage.host && !!localStorage.port && !!localStorage.name){
     Pebble.sendAppMessage({
       "message": "Ready!"
@@ -36,8 +38,10 @@ Pebble.addEventListener("showConfiguration", function() {
 
 Pebble.addEventListener("webviewclosed", function(e) {
   var options = JSON.parse(decodeURIComponent(e.response));
-  
-  localStorage.host = options.host;
-  localStorage.name = options.name;
-  localStorage.port = options.port;
+
+  localStorage.host     = options.host;
+  localStorage.name     = options.name;
+  localStorage.port     = options.port;
+  localStorage.device   = options.device  || 'pebble';
+  localStoreage.command = options.command || 'publish_event';
 });
