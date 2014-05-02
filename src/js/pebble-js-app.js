@@ -43,5 +43,5 @@ Pebble.addEventListener("webviewclosed", function(e) {
   localStorage.name     = options.name;
   localStorage.port     = options.port;
   localStorage.device   = options.device  || 'pebble';
-  localStorage.command = options.command || 'publish_event';
+  localStorage.command  = options.command || 'publish_event';
 });
