@@ -31,6 +31,16 @@
           <textarea cols="40" rows="8" name="port" id="port"></textarea>
         </div>
 
+        <div data-role="fieldcontain">
+          <label for="device">Robot API device (default: pebble):</label>
+          <textarea cols="40" rows="8" name="device" id="device"></textarea>
+        </div>
+
+        <div data-role="fieldcontain">
+          <label for="command">Robot API command (default: publish_event):</label>
+          <textarea cols="40" rows="8" name="command" id="command"></textarea>
+        </div>
+
         <div class="ui-body ui-body-b">
           <fieldset class="ui-grid-a">
               <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">Cancel</button></div>
@@ -43,9 +53,11 @@
     <script>
       function saveOptions() {
         var options = {
-          'name': $("#name").val(),
-          'host': $("#host").val(),
-          'port': $("#port").val()
+          'name':    $("#name").val(),
+          'host':    $("#host").val(),
+          'port':    $("#port").val(),
+          'device':  $("#device").val(),
+          'command': $("#command").val()
         }
         return options;
       }
