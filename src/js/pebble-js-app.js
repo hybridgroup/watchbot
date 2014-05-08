@@ -1,23 +1,46 @@
-function publishEvent(data) {
+function getUrlFor(command){
   var name    = localStorage.name;
   var host    = localStorage.host;
   var port    = localStorage.port;
   var device  = localStorage.device;
-  var command = localStorage.command;
 
-  var baseUrl = host + ":" + port + "/robots/" + name;
-  var publish = "/devices/"+ device +"/commands/" + command;
-  var params  = '{"name":"button", "data":"' + data + '"}';
-  var req = new XMLHttpRequest();
+  return host + ":" + port + "/robots/" + name + "/devices/" + device + "/commands/" + command;
+}
 
-  req.open('POST', baseUrl + publish, true);
+function publishEvent(data) {
+  var params = '{"name":"button", "data":"' + data + '"}';
+  var req    = new XMLHttpRequest();
+
+  req.open('POST', getUrlFor(localStorage.command), true);
   req.setRequestHeader("Content-type", "application/json");
   req.send(params);
 }
 
-Pebble.addEventListener("ready", function(e) {
+function pollForMessages() {
+  var req = new XMLHttpRequest();
 
+  req.open('GET', getUrlFor('pending_message'), true);
+  req.onload = function(e) {
+    if (req.readyState == 4) {
+      if(req.status == 200) {
+        var response = JSON.parse(req.responseText);
+        var message = response.result.toString();
+        if (message !== "No pending messages") {
+          Pebble.showSimpleNotificationOnPebble("Robot", message);
+        }
+      } else {
+        console.log("Error");
+      }
+    }
+  };
+  req.send(null);
+}
+
+Pebble.addEventListener("ready", function(e) {  
   if (!!localStorage.host && !!localStorage.port && !!localStorage.name){
+    setInterval(function(){
+      pollForMessages();
+    },3000);
     Pebble.sendAppMessage({
       "message": "Ready!"
     });
