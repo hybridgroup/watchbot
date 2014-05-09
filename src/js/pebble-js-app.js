@@ -5,7 +5,7 @@ function getUrlFor(command){
   var host    = localStorage.host;
   var port    = localStorage.port;
   var device  = localStorage.device;
-  
+
   return host + ":" + port + "/robots/" + name + "/devices/" + device + "/commands/" + command;
 }
 
@@ -17,7 +17,7 @@ function processMessage(data) {
   } else {
     event_name = "accel";
   }
-  
+
   publishEvent(event_name, data);
 }
 
@@ -35,7 +35,7 @@ function pollForMessages() {
 
   req.open('GET', getUrlFor('pending_message'), true);
   req.onload = function(e) {
-    if (req.readyState == 4) {        
+    if (req.readyState == 4) {
       if(req.status == 200) {
         var response = JSON.parse(req.responseText);
         var message = response.result;
@@ -50,7 +50,7 @@ function pollForMessages() {
   req.send(null);
 }
 
-Pebble.addEventListener("ready", function(e) {  
+Pebble.addEventListener("ready", function(e) {
   if (!!localStorage.host && !!localStorage.port && !!localStorage.name){
     Pebble.sendAppMessage({
       "message": "Ready!"
