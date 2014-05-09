@@ -24,9 +24,9 @@ function pollForMessages() {
     if (req.readyState == 4) {
       if(req.status == 200) {
         var response = JSON.parse(req.responseText);
-        var message = response.result.toString();
-        if (message !== "No pending messages") {
-          Pebble.showSimpleNotificationOnPebble("Robot", message);
+        var message = response.result;
+        if (message !== null) {
+          Pebble.showSimpleNotificationOnPebble("Robot", message.toString());
         }
       } else {
         console.log("Error");
@@ -36,7 +36,7 @@ function pollForMessages() {
   req.send(null);
 }
 
-Pebble.addEventListener("ready", function(e) {  
+Pebble.addEventListener("ready", function(e) {
   if (!!localStorage.host && !!localStorage.port && !!localStorage.name){
     setInterval(function(){
       pollForMessages();
