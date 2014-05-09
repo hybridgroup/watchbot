@@ -1,8 +1,11 @@
 #include <pebble.h>
+#include <utils.h>
+
+#define STEP_MS 150
 
 static Window *window;
 static TextLayer *message_layer;
-static char symbol[5];
+static AppTimer *timer;
 
 enum {
   QUOTE_KEY_MESSAGE = 0x1,
@@ -27,6 +30,34 @@ static void send_event_msg(char *message) {
   dict_write_end(iter);
 
   app_message_outbox_send();
+}
+
+static void send_accel_msg() {
+  char x[5];
+  char y[5];
+  char z[5];
+  char msg[20];
+  
+  AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
+  accel_service_peek(&accel);
+  
+  itoa(accel.x, x);
+  itoa(accel.y, y);
+  itoa(accel.z, z);
+  
+  strcpy(msg, x);
+  strcat(msg, ",");
+  strcat(msg, y);
+  strcat(msg, ",");
+  strcat(msg, z);
+  
+  send_event_msg(msg);
+} 
+
+static void timer_callback(void *data) {
+  send_accel_msg();
+
+  timer = app_timer_register(STEP_MS, timer_callback, NULL);
 }
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -91,6 +122,8 @@ static void window_unload(Window *window) {
 static void init(void) {
   window = window_create();
   app_message_init();
+  accel_data_service_subscribe(0, NULL);
+  timer = app_timer_register(STEP_MS, timer_callback, NULL);
   window_set_click_config_provider(window, click_config_provider);
   window_set_window_handlers(window, (WindowHandlers) {
     .load = window_load,
@@ -101,6 +134,7 @@ static void init(void) {
 }
 
 static void deinit(void) {
+  accel_data_service_unsubscribe();
   window_destroy(window);
 }
 

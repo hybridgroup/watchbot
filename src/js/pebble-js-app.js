@@ -1,14 +1,28 @@
+var poll = true;
+
 function getUrlFor(command){
   var name    = localStorage.name;
   var host    = localStorage.host;
   var port    = localStorage.port;
   var device  = localStorage.device;
-
+  
   return host + ":" + port + "/robots/" + name + "/devices/" + device + "/commands/" + command;
 }
 
-function publishEvent(data) {
-  var params = '{"name":"button", "data":"' + data + '"}';
+function processMessage(data) {
+  var event_name;
+
+  if ( data == "up" || data == "down" || data == "select"){
+    event_name = "button";
+  } else {
+    event_name = "accel";
+  }
+  
+  publishEvent(event_name, data);
+}
+
+function publishEvent(event_name, data) {
+  var params = '{"name":"' + event_name+ '", "data":"' + data + '"}';
   var req    = new XMLHttpRequest();
 
   req.open('POST', getUrlFor(localStorage.command), true);
@@ -21,7 +35,7 @@ function pollForMessages() {
 
   req.open('GET', getUrlFor('pending_message'), true);
   req.onload = function(e) {
-    if (req.readyState == 4) {
+    if (req.readyState == 4) {        
       if(req.status == 200) {
         var response = JSON.parse(req.responseText);
         var message = response.result;
@@ -36,11 +50,8 @@ function pollForMessages() {
   req.send(null);
 }
 
-Pebble.addEventListener("ready", function(e) {
+Pebble.addEventListener("ready", function(e) {  
   if (!!localStorage.host && !!localStorage.port && !!localStorage.name){
-    setInterval(function(){
-      pollForMessages();
-    },3000);
     Pebble.sendAppMessage({
       "message": "Ready!"
     });
@@ -52,7 +63,13 @@ Pebble.addEventListener("ready", function(e) {
 });
 
 Pebble.addEventListener("appmessage", function(e) {
-  publishEvent(e.payload.message);
+  if (poll) {
+    pollForMessages();
+    poll = false;
+  } else {
+    processMessage(e.payload.message); 
+    poll = true;
+  }
 });
 
 Pebble.addEventListener("showConfiguration", function() {
