@@ -10,15 +10,11 @@ function getUrlFor(command){
 }
 
 function processMessage(data) {
-  var event_name;
-
   if ( data == "up" || data == "down" || data == "select"){
-    event_name = "button";
+    publishEvent("button", data);
   } else {
-    event_name = "accel";
+    publishEvent("button", data);
   }
-
-  publishEvent(event_name, data);
 }
 
 function publishEvent(event_name, data) {
