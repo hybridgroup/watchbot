@@ -63,9 +63,10 @@ Pebble.addEventListener("appmessage", function(e) {
     pollForMessages();
     poll = false;
   } else {
-    processMessage(e.payload.message);
     poll = true;
   }
+
+  processMessage(e.payload.message);
 });
 
 Pebble.addEventListener("showConfiguration", function() {
