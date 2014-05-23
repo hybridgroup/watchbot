@@ -10,15 +10,11 @@ function getUrlFor(command){
 }
 
 function processMessage(data) {
-  var event_name;
-
   if ( data == "up" || data == "down" || data == "select"){
-    event_name = "button";
+    publishEvent("button", data);
   } else {
-    event_name = "accel";
+    publishEvent("accel", data);
   }
-
-  publishEvent(event_name, data);
 }
 
 function publishEvent(event_name, data) {
@@ -67,9 +63,10 @@ Pebble.addEventListener("appmessage", function(e) {
     pollForMessages();
     poll = false;
   } else {
-    processMessage(e.payload.message);
     poll = true;
   }
+
+  processMessage(e.payload.message);
 });
 
 Pebble.addEventListener("showConfiguration", function() {
