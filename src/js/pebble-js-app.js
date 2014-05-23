@@ -13,7 +13,7 @@ function processMessage(data) {
   if ( data == "up" || data == "down" || data == "select"){
     publishEvent("button", data);
   } else {
-    publishEvent("button", data);
+    publishEvent("accel", data);
   }
 }
 
