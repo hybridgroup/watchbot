@@ -1,7 +1,7 @@
 {
-    "longName": "chomps",
+    "longName": "watchbot",
     "versionCode": 1,
-    "shortName": "chomps",
+    "shortName": "watchbot",
     "capabilities": [
         "configurable"
     ],
