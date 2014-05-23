@@ -1,7 +1,7 @@
 #include <pebble.h>
 #include <utils.h>
 
-#define STEP_MS 150
+#define STEP_MS 300
 
 static Window *window;
 static TextLayer *message_layer;
@@ -14,7 +14,7 @@ enum {
 
 static void send_event_msg(char *message) {
   char *data;
-  
+
   Tuplet fetch_tuple = TupletInteger(QUOTE_KEY_FETCH, 1);
   Tuplet message_tuple = TupletCString(QUOTE_KEY_MESSAGE, message);
 
