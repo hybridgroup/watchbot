@@ -1,21 +1,21 @@
 {
+    "longName": "chomps",
     "versionCode": 1,
-    "versionLabel": "0.0.1",
-    "appKeys": {
-        "fetch": 2,
-        "message": 1
-    },
+    "shortName": "chomps",
     "capabilities": [
         "configurable"
     ],
-    "uuid": "e5b1a444-a47c-4dc4-bc91-601eccf4eab7",
     "resources": {
         "media": []
     },
-    "longName": "chomps",
+    "versionLabel": "0.0.1",
     "watchapp": {
         "watchface": false
     },
-    "companyName": "The Hybrid Group",
-    "shortName": "chomps"
+    "uuid": "e5b1a444-a47c-4dc4-bc91-601eccf4eab7",
+    "appKeys": {
+        "message": 1,
+        "fetch": 2
+    },
+    "companyName": "The Hybrid Group"
 }
