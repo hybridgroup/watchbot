@@ -8,7 +8,7 @@
     "resources": {
         "media": []
     },
-    "versionLabel": "0.0.1",
+    "versionLabel": "0.0.3",
     "watchapp": {
         "watchface": false
     },
