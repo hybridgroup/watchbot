@@ -1,14 +1,147 @@
 # watchbot
 
-A Pebble app for interfacing with your Artoo/Cylon.js/Gobot robot
+**A pebble app to control robots from your wrist.**
+
+With very few lines of code, you can:
+
+* Send notifications to your pebble:
+
+        my.pebble.send_notification("Hello Pebble!");
+
+* Detect when a button is pushed:
+
+        my.pebble.on('button', function(data) {
+          console.log("Button pushed: " + data);
+        });
+
+* Tap events awareness:
+
+        my.pebble.on('tap', function(data) {
+          console.log("Tap event detected");
+        });
+        
+* Get accelerometer data:
+
+        my.pebble.on('accel', function(data) {
+          console.log(data);
+        });
+
+### Full examples of how to interact with **watchbot**
+
+##### Hello Pebble!
+
+        var Cylon = require('cylon');
+
+        Cylon.api({
+          host: '0.0.0.0',
+          port: '8080',
+          ssl:  false
+        });
+
+        pebbleRobot = {
+          name: 'pebble',
+
+          connection: {
+            name: 'pebble',
+            adaptor: 'pebble'
+          },
+        
+          device: {
+            name: 'pebble',
+            driver: 'pebble'
+          },
+        
+          work: function(my) {
+            my.pebble.send_notification("Hello Pebble!");
+        
+            my.pebble.on('button', function(data) {
+              console.log("Button pushed: " + data);
+            });
+        
+            my.pebble.on('tap', function(data) {
+              console.log("Tap event detected");
+            });
+          }
+        
+        }
+
+        Cylon.robot(pebbleRobot);
+        Cylon.start();
+
+##### Accelerometer
+
+        var Cylon = require('cylon');
+
+        Cylon.api({
+          host: '0.0.0.0',
+          port: '8080',
+          ssl:  false
+        });
+
+        pebbleRobot = {
+          name: 'pebble',
+
+          connection: {
+            name: 'pebble',
+            adaptor: 'pebble'
+          },
+        
+          device: {
+            name: 'pebble',
+            driver: 'pebble'
+          },
+        
+          work: function(my) {
+            my.pebble.on('accel', function(data) {
+              console.log(data);
+            });
+          }
+        
+        }
+
+        Cylon.robot(pebbleRobot);
+        Cylon.start();
+
+### More information about pebble drivers/adaptors
+
+* [Cylon.js (Javascript)](http://cylonjs.com/documentation/platforms/pebble/)
+* [Artoo    (Ruby)](http://artoo.io/documentation/platforms/pebble/)
+* [Gobot    (Golang)](http://gobot.io/documentation/platforms/pebble/)
 
 # Download
 
-* Download app from pebble appstore: https://apps.getpebble.com/applications/52b11885b0661fb292000004
+[![watchbot appstore](http://new.tinygrab.com/089df54f8fa9653cbc03459bef1dc11352cd2e4fc6.png)](https://apps.getpebble.com/applications/52b11885b0661fb292000004)
+
+* Link to pebble appstore: https://apps.getpebble.com/applications/52b11885b0661fb292000004
+* Open this link from your phone: pebble://appstore/52b11885b0661fb292000004
 
 # Configure
 
-* After app is installed, click on "Settings" and configure robot name, robot api host, and robot api port
+After app is installed, click on "Settings" and configure:
+
+* robot name
+* robot api host
+* robot api port
+
+# Releases
+
+* 0.0.1 - Button events
+* 0.0.2 - Notifications and accelerometer events
+* 0.0.3 - Tap event
+
+## Contribute
+
+* All patches must be provided under the Apache 2.0 License
+* Please use the -s option in git to "sign off" that the commit is your work and you are providing it under the Apache 2.0 License
+* Submit a Github Pull Request to the appropriate branch and ideally discuss the changes with us in IRC.
+* We will look at the patch, test it out, and give you feedback.
+* Avoid doing minor whitespace changes, renamings, etc. along with merged content. These will be done by the maintainers from time to time but they can complicate merges and should be done seperately.
+* Take care to maintain the existing coding style.
+* All pull requests should be "fast forward"
+  * If there are commits after yours use “git rebase -i <new_head_branch>”
+  * If you have local changes you may need to use “git stash”
+  * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
+
 
 # Install from source
 
@@ -20,3 +153,18 @@ A Pebble app for interfacing with your Artoo/Cylon.js/Gobot robot
 * cd into the cloned repo folder `cd watchbot`
 * run `pebble build`
 * run `pebble install --phone IP_ADDRESS_OF_YOUR_PHONE` (you can find the ip of your phone in the developer mode mentioned above)
+
+## LICENSE
+
+Copyright (c) 2014 The Hybrid Group
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
