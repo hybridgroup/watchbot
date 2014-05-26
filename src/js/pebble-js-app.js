@@ -12,6 +12,8 @@ function getUrlFor(command){
 function processMessage(data) {
   if ( data == "up" || data == "down" || data == "select"){
     publishEvent("button", data);
+  } else if (data == "tap"){
+    publishEvent("tap", "");
   } else {
     publishEvent("accel", data);
   }

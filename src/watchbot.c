@@ -78,6 +78,10 @@ static void click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler);
 }
 
+static void accel_tap_handler(AccelAxisType axis, int32_t direction) {
+  send_event_msg("tap");
+}
+
 static void in_received_handler(DictionaryIterator *iter, void *context) {
   Tuple *message_tuple = dict_find(iter, QUOTE_KEY_MESSAGE);
 
@@ -122,6 +126,7 @@ static void window_unload(Window *window) {
 static void init(void) {
   window = window_create();
   app_message_init();
+  accel_tap_service_subscribe(&accel_tap_handler);
   accel_data_service_subscribe(0, NULL);
   timer = app_timer_register(STEP_MS, timer_callback, NULL);
   window_set_click_config_provider(window, click_config_provider);
@@ -135,6 +140,7 @@ static void init(void) {
 
 static void deinit(void) {
   accel_data_service_unsubscribe();
+  accel_tap_service_unsubscribe();
   window_destroy(window);
 }
 
