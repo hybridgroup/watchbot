@@ -128,6 +128,7 @@ After app is installed, click on "Settings" and configure:
 * 0.0.1 - Button events
 * 0.0.2 - Notifications and accelerometer events
 * 0.0.3 - Tap event
+* 0.0.4 - Adding styles to configuration page
 
 ## Contribute
 
