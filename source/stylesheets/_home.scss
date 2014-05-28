@@ -1,6 +1,7 @@
 .hero {
   background: #f7f5f3 url('/images/pebble-watch-art.png') center bottom no-repeat;
   min-height: 800px;
+  overflow: hidden;
 
   p {
     font-size: 19px;
@@ -18,7 +19,6 @@
   .actions {
     text-align: center;
   }
-
 
   .action {
     $color-link: #A0CE69;
