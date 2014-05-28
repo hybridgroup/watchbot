@@ -1,4 +1,4 @@
-# watchbot
+![](http://hybridgroup.github.io/watchbot/images/watchbot.png)
 
 **A pebble app to control robots from your wrist.**
 
