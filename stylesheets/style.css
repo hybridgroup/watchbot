@@ -420,19 +420,16 @@ a {
 
 /* line 57, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/style.css.scss */
 .container {
-  *zoom: 1;
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
   max-width: 48em;
   position: relative;
   padding: 0 20px; }
-  /* line 18, /Users/mario/.rvm/gems/ruby-1.9.3-p484@robotops/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
-  .container:before, .container:after {
-    content: " ";
-    display: table; }
-  /* line 23, /Users/mario/.rvm/gems/ruby-1.9.3-p484@robotops/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+  /* line 15, /Users/mario/.rvm/gems/ruby-1.9.3-p484@robotops/gems/bourbon-3.2.3/app/assets/stylesheets/addons/_clearfix.scss */
   .container:after {
+    content: "";
+    display: table;
     clear: both; }
 
 /* line 1, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/elements/_header.scss */
@@ -441,8 +438,9 @@ header {
   border-bottom: 5px solid #ededed;
   color: #fff;
   text-align: center;
-  padding: 40px 0; }
-  /* line 8, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/elements/_header.scss */
+  padding: 40px 0;
+  overflow: hidden; }
+  /* line 9, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/elements/_header.scss */
   header h3 {
     margin: 0;
     font-size: 24px; }
