@@ -1,0 +1,38 @@
+.hero {
+  background: #f7f5f3 url('/images/pebble-watch-art.png') center bottom no-repeat;
+  min-height: 800px;
+
+  p {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 50px 0 30px 0;
+  }
+
+  pre {
+    background: #F8F8F8;
+    border: 1px solid #979797;
+    padding: 20px 10px;
+    font-size: 14px;
+  }
+
+  .actions {
+    text-align: center;
+  }
+
+
+  .action {
+    $color-link: #A0CE69;
+    background: $color-link;
+    border: 1px solid #979797;
+    color: #2A2D26;
+    font-size: 20px;
+    padding: 20px 30px;
+    border-radius: 6px;
+    box-shadow: inset 0px 1px 1px 0px #C7E6A3;
+
+    &:hover {
+      box-shadow: none;
+      background: lighten($color-link, 10%);
+    }
+  }
+}

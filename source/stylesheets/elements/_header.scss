@@ -1,0 +1,18 @@
+header {
+  background-color: $color-main-bg;
+  border-bottom: 5px solid $color-section-border;
+  color: #fff;
+  text-align: center;
+  padding: 40px 0;
+
+  h3 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+
+
+  @include media($tablet-portrait-and-up) {
+  }
+
+}

@@ -1,4 +1,13 @@
-# Ignore build generated files
-build
-.lock-waf_linux2_build
-.lock-waf_darwin_build
+# Ignore bundler config
+/.bundle
+
+# Ignore the build directory
+/build
+
+# Ignore Sass' cache
+.sass-cache
+.cache
+
+.DS_Store
+.rvmrc
+Gemfile.lock

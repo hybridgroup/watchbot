@@ -1,0 +1,20 @@
+footer {
+  background-color: $color-main-bg;
+  clear: both;
+  color: #fff;
+  text-align: center;
+
+  p {
+    margin-top: 25px;
+  }
+}
+
+.thg-logo {
+  width: 189px;
+  height: 29px;
+  display: inline-block;
+  background: url(../images/logo-thg.png) no-repeat top left;
+  span {
+    display: none;
+  }
+}

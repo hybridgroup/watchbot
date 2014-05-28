@@ -1,0 +1,67 @@
+@import 'mixins';
+@import 'normalize';
+@import 'bourbon';
+@import "neat";
+
+// Variables
+$color-main-bg : #992D2D;
+$color-main-fg : #3E3E3E;
+$color-main-hd : rgb(255, 248, 204);
+$color-hero-bg: #E6A15E;
+$color-section-bg: #ffffff;
+$color-section-border: #ededed;
+$color-section-alternate-bg: #fff;
+
+$color-created-bg: #e37b49;
+
+$color-main-anchor-fg: #DF9060;
+$color-hover-anchor-fg: #A77252;
+
+
+// Font Weights
+$fw-light      : 300;
+$fw-normal     : 400;
+$fw-semi-bold  : 600;
+$fw-bold       : 700;
+$fw-extra-bold : 800;
+
+// Grid
+$grid-columns           : 12;
+$visual-grid-color      : #000;
+$tablet-landscape       : new-breakpoint(maxx-width 1000px 4);
+$tablet-portrait        : new-breakpoint(max-width 768px 4);
+$tablet-portrait-and-up : new-breakpoint(min-width 768px 4);
+$tablet-small           : new-breakpoint(max-width 600px 4);
+$mobile                 : new-breakpoint(max-width 480px 4);
+$mobile-small           : new-breakpoint(max-width 320px 4);
+
+// General
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: $color-main-fg;
+  background: $color-main-bg;
+}
+
+a {
+  color: $color-main-anchor-fg;
+  text-decoration: none;
+  &:hover {
+    color: $color-hover-anchor-fg;
+  }
+}
+
+.container {
+  @include outer-container;
+  max-width: em(768);
+  position: relative;
+  padding: 0 20px;
+}
+
+@import 'elements/header';
+@import 'elements/buttons';
+@import 'elements/footer';
+@import 'home';
