@@ -468,19 +468,20 @@ footer {
 /* line 1, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
 .hero {
   background: #f7f5f3 url("/images/pebble-watch-art.png") center bottom no-repeat;
-  min-height: 800px; }
-  /* line 5, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  min-height: 800px;
+  overflow: hidden; }
+  /* line 6, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
   .hero p {
     font-size: 19px;
     font-weight: 600;
     margin: 50px 0 30px 0; }
-  /* line 11, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  /* line 12, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
   .hero pre {
     background: #F8F8F8;
     border: 1px solid #979797;
     padding: 20px 10px;
     font-size: 14px; }
-  /* line 18, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  /* line 19, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
   .hero .actions {
     text-align: center; }
   /* line 23, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
