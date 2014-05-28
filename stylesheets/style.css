@@ -1,0 +1,500 @@
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 10, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+/**
+ * Remove default margin.
+ */
+/* line 20, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+body {
+  margin: 0; }
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 44, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 56, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 66, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+/* line 77, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+[hidden],
+template {
+  display: none; }
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 88, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+a {
+  background: transparent; }
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 97, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+a:active,
+a:hover {
+  outline: 0; }
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 108, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 117, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+b,
+strong {
+  font-weight: bold; }
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 125, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+dfn {
+  font-style: italic; }
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 134, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 143, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+mark {
+  background: #ff0;
+  color: #000; }
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 152, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 161, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+/* line 168, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+sup {
+  top: -0.5em; }
+
+/* line 172, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+sub {
+  bottom: -0.25em; }
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 183, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+img {
+  border: 0; }
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 191, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 202, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+figure {
+  margin: 1em 40px; }
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 210, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0; }
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 220, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+pre {
+  overflow: auto; }
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 231, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 255, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 265, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+button {
+  overflow: visible; }
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 277, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+button,
+select {
+  text-transform: none; }
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 292, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */ }
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 302, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 311, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 321, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+input {
+  line-height: normal; }
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 334, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 346, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 356, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box; }
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 370, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 378, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 389, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 398, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+textarea {
+  overflow: auto; }
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 407, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+optgroup {
+  font-weight: bold; }
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 418, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 424, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_normalize.css */
+td,
+th {
+  padding: 0; }
+
+/* line 2, /Users/mario/.rvm/gems/ruby-1.9.3-p484@robotops/gems/neat-1.5.1/app/assets/stylesheets/grid/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 39, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/style.css.scss */
+html, body {
+  height: 100%; }
+
+/* line 43, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/style.css.scss */
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #3e3e3e;
+  background: #992d2d; }
+
+/* line 49, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/style.css.scss */
+a {
+  color: #df9060;
+  text-decoration: none; }
+  /* line 52, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/style.css.scss */
+  a:hover {
+    color: #a77252; }
+
+/* line 57, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/style.css.scss */
+.container {
+  *zoom: 1;
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 48em;
+  position: relative;
+  padding: 0 20px; }
+  /* line 18, /Users/mario/.rvm/gems/ruby-1.9.3-p484@robotops/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+  .container:before, .container:after {
+    content: " ";
+    display: table; }
+  /* line 23, /Users/mario/.rvm/gems/ruby-1.9.3-p484@robotops/gems/bourbon-3.1.8/app/assets/stylesheets/addons/_clearfix.scss */
+  .container:after {
+    clear: both; }
+
+/* line 1, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/elements/_header.scss */
+header {
+  background-color: #992d2d;
+  border-bottom: 5px solid #ededed;
+  color: #fff;
+  text-align: center;
+  padding: 40px 0; }
+  /* line 8, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/elements/_header.scss */
+  header h3 {
+    margin: 0;
+    font-size: 24px; }
+
+/* line 1, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/elements/_footer.scss */
+footer {
+  background-color: #992d2d;
+  clear: both;
+  color: #fff;
+  text-align: center; }
+  /* line 7, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/elements/_footer.scss */
+  footer p {
+    margin-top: 25px; }
+
+/* line 12, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/elements/_footer.scss */
+.thg-logo {
+  width: 189px;
+  height: 29px;
+  display: inline-block;
+  background: url(../images/logo-thg.png) no-repeat top left; }
+  /* line 17, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/elements/_footer.scss */
+  .thg-logo span {
+    display: none; }
+
+/* line 1, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+.hero {
+  background: #f7f5f3 url("/images/pebble-watch-art.png") center bottom no-repeat;
+  min-height: 800px; }
+  /* line 5, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  .hero p {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 50px 0 30px 0; }
+  /* line 11, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  .hero pre {
+    background: #F8F8F8;
+    border: 1px solid #979797;
+    padding: 20px 10px;
+    font-size: 14px; }
+  /* line 18, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  .hero .actions {
+    text-align: center; }
+  /* line 23, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  .hero .action {
+    background: #a0ce69;
+    border: 1px solid #979797;
+    color: #2A2D26;
+    font-size: 20px;
+    padding: 20px 30px;
+    border-radius: 6px;
+    box-shadow: inset 0px 1px 1px 0px #C7E6A3; }
+    /* line 33, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+    .hero .action:hover {
+      box-shadow: none;
+      background: #b8db8f; }
