@@ -1,8 +1,6 @@
 #include <pebble.h>
 #include <utils.h>
 
-#define STEP_MS 300
-
 static Window *window;
 static TextLayer *message_layer;
 static AppTimer *timer;
@@ -32,34 +30,6 @@ static void send_event_msg(char *message) {
   app_message_outbox_send();
 }
 
-static void send_accel_msg() {
-  char x[5];
-  char y[5];
-  char z[5];
-  char msg[20];
-  
-  AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
-  accel_service_peek(&accel);
-  
-  itoa(accel.x, x);
-  itoa(accel.y, y);
-  itoa(accel.z, z);
-  
-  strcpy(msg, x);
-  strcat(msg, ",");
-  strcat(msg, y);
-  strcat(msg, ",");
-  strcat(msg, z);
-  
-  send_event_msg(msg);
-} 
-
-static void timer_callback(void *data) {
-  send_accel_msg();
-
-  timer = app_timer_register(STEP_MS, timer_callback, NULL);
-}
-
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   send_event_msg("select");
 }
@@ -80,6 +50,24 @@ static void click_config_provider(void *context) {
 
 static void accel_tap_handler(AccelAxisType axis, int32_t direction) {
   send_event_msg("tap");
+}
+
+static void accel_data_handler(AccelData *data, uint32_t num_samples) {
+  char x[5];
+  char y[5];
+  char z[5];
+  char msg[20];
+  itoa(data[0].x, x);
+  itoa(data[0].y, y);
+  itoa(data[0].z, z);
+  
+  strcpy(msg, x);
+  strcat(msg, ",");
+  strcat(msg, y);
+  strcat(msg, ",");
+  strcat(msg, z);
+  
+  send_event_msg(msg);
 }
 
 static void in_received_handler(DictionaryIterator *iter, void *context) {
@@ -104,7 +92,7 @@ static void app_message_init(void) {
   app_message_register_inbox_dropped(in_dropped_handler);
   app_message_register_outbox_failed(out_failed_handler);
   // Init buffers
-  app_message_open(64, 64);
+  app_message_open(APP_MESSAGE_INBOX_SIZE_MINIMUM, APP_MESSAGE_OUTBOX_SIZE_MINIMUM);
 }
 
 static void window_load(Window *window) {
@@ -126,9 +114,10 @@ static void window_unload(Window *window) {
 static void init(void) {
   window = window_create();
   app_message_init();
+  accel_service_set_sampling_rate(ACCEL_SAMPLING_25HZ);
+  accel_service_set_samples_per_update(1);
+  accel_data_service_subscribe(1, &accel_data_handler);
   accel_tap_service_subscribe(&accel_tap_handler);
-  accel_data_service_subscribe(0, NULL);
-  timer = app_timer_register(STEP_MS, timer_callback, NULL);
   window_set_click_config_provider(window, click_config_provider);
   window_set_window_handlers(window, (WindowHandlers) {
     .load = window_load,
