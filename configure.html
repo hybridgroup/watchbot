@@ -47,8 +47,13 @@
         </div>
 
         <div data-role="fieldcontain">
-          <label for="command">Robot API command:</label>
-          <textarea cols="24" name="command" id="command"></textarea>
+          <label for="publish-command">Robot API publish command:</label>
+          <textarea cols="24" name="publish-command" id="publish-command"></textarea>
+        </div>
+
+        <div data-role="fieldcontain">
+          <label for="message-command">Robot API message command:</label>
+          <textarea cols="24" name="message-command" id="message-command"></textarea>
         </div>
 
         <br/>
@@ -66,7 +71,8 @@
           document.getElementById("host").value    = HOST;
           document.getElementById("port").value    = PORT;
           document.getElementById("device").value  = DEVICE;
-          document.getElementById("command").value = COMMAND;
+          document.getElementById("publish-command").value = PUBLISH_COMMAND;
+          document.getElementById("message-command").value = MESSAGE_COMMAND;
         };
 
         function saveOptions() {
@@ -76,7 +82,8 @@
             "host":    document.getElementById("host").value,
             "port":    document.getElementById("port").value,
             "device":  document.getElementById("device").value,
-            "command": document.getElementById("command").value
+            "publishCommand": document.getElementById("publish-command").value,
+            "messageCommand": document.getElementById("messagecommand").value
           };
           return options;
         }
