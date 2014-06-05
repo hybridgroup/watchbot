@@ -13,7 +13,11 @@ header {
 
 
 
-  @include media($tablet-portrait-and-up) {
+  @include media($mobile) {
+    .logo img {
+      width: 80%;
+    }
+
   }
 
 }
