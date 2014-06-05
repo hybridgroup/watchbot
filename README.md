@@ -41,6 +41,12 @@ my.pebble.on('accel', function(data) {
 ```javascript
 var Cylon = require('cylon');
 
+Cylon.api({
+  host: '0.0.0.0',
+  port: '8080',
+  ssl: false
+});
+
 Cylon.robot({
   name: 'pebble',
 
@@ -65,13 +71,21 @@ Cylon.robot({
       console.log("Tap event detected");
     });
   }
-}).start();
+});
+
+Cylon.start();
 ```
 
 ##### Accelerometer
 
 ```javascript
 var Cylon = require('cylon');
+
+Cylon.api({
+  host: '0.0.0.0',
+  port: '8080',
+  ssl: false
+});
 
 Cylon.robot({
   name: 'pebble',
@@ -91,7 +105,9 @@ Cylon.robot({
       console.log(data);
     });
   }
-}).start();
+});
+
+Cylon.start();
 ```
 
 ### More information about pebble drivers/adaptors
