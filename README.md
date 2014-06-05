@@ -6,101 +6,93 @@ With very few lines of code, you can:
 
 * Send notifications to your pebble:
 
-        my.pebble.send_notification("Hello Pebble!");
+```javascript
+my.pebble.send_notification("Hello Pebble!");
+```
 
 * Detect when a button is pushed:
 
-        my.pebble.on('button', function(data) {
-          console.log("Button pushed: " + data);
-        });
+```javascript
+my.pebble.on('button', function(data) {
+  console.log("Button pushed: " + data);
+});
+```
 
 * Tap events awareness:
 
-        my.pebble.on('tap', function(data) {
-          console.log("Tap event detected");
-        });
-        
+```javascript
+my.pebble.on('tap', function(data) {
+  console.log("Tap event detected");
+});
+```
+
 * Get accelerometer data:
 
-        my.pebble.on('accel', function(data) {
-          console.log(data);
-        });
+```javascript
+my.pebble.on('accel', function(data) {
+  console.log(data);
+});
+```
 
 ### Full examples of how to interact with **watchbot**
 
 ##### Hello Pebble!
 
-        var Cylon = require('cylon');
+```javascript
+var Cylon = require('cylon');
 
-        Cylon.api({
-          host: '0.0.0.0',
-          port: '8080',
-          ssl:  false
-        });
+Cylon.robot({
+  name: 'pebble',
 
-        pebbleRobot = {
-          name: 'pebble',
+  connection: {
+    name: 'pebble',
+    adaptor: 'pebble'
+  },
 
-          connection: {
-            name: 'pebble',
-            adaptor: 'pebble'
-          },
-        
-          device: {
-            name: 'pebble',
-            driver: 'pebble'
-          },
-        
-          work: function(my) {
-            my.pebble.send_notification("Hello Pebble!");
-        
-            my.pebble.on('button', function(data) {
-              console.log("Button pushed: " + data);
-            });
-        
-            my.pebble.on('tap', function(data) {
-              console.log("Tap event detected");
-            });
-          }
-        
-        }
+  device: {
+    name: 'pebble',
+    driver: 'pebble'
+  },
 
-        Cylon.robot(pebbleRobot);
-        Cylon.start();
+  work: function(my) {
+    my.pebble.send_notification("Hello Pebble!");
+
+    my.pebble.on('button', function(data) {
+      console.log("Button pushed: " + data);
+    });
+
+    my.pebble.on('tap', function(data) {
+      console.log("Tap event detected");
+    });
+  }
+}).start();
+```
 
 ##### Accelerometer
 
-        var Cylon = require('cylon');
+```javascript
+var Cylon = require('cylon');
 
-        Cylon.api({
-          host: '0.0.0.0',
-          port: '8080',
-          ssl:  false
-        });
+Cylon.robot({
+  name: 'pebble',
 
-        pebbleRobot = {
-          name: 'pebble',
+  connection: {
+    name: 'pebble',
+    adaptor: 'pebble'
+  },
 
-          connection: {
-            name: 'pebble',
-            adaptor: 'pebble'
-          },
-        
-          device: {
-            name: 'pebble',
-            driver: 'pebble'
-          },
-        
-          work: function(my) {
-            my.pebble.on('accel', function(data) {
-              console.log(data);
-            });
-          }
-        
-        }
+  device: {
+    name: 'pebble',
+    driver: 'pebble'
+  },
 
-        Cylon.robot(pebbleRobot);
-        Cylon.start();
+  work: function(my) {
+    my.pebble.on('accel', function(data) {
+      console.log(data);
+    });
+  }
+}).start();
+```
 
 ### More information about pebble drivers/adaptors
 
@@ -112,8 +104,9 @@ With very few lines of code, you can:
 
 [![watchbot appstore](http://new.tinygrab.com/089df54f8fa9653cbc03459bef1dc11352cd2e4fc6.png)](https://apps.getpebble.com/applications/52b11885b0661fb292000004)
 
-* Link to pebble appstore: https://apps.getpebble.com/applications/52b11885b0661fb292000004
-* Open this link from your phone: pebble://appstore/52b11885b0661fb292000004
+You can find Watchbot in the [Pebble Appstore][appstore], or add it directly to your phone's Pebble app with this link: pebble://appstore/52b11885b0661fb292000004
+
+[appstore]: https://apps.getpebble.com/applications/52b11885b0661fb292000004
 
 # Configure
 
@@ -125,10 +118,13 @@ After app is installed, click on "Settings" and configure:
 
 # Releases
 
-* 0.0.1 - Button events
-* 0.0.2 - Notifications and accelerometer events
-* 0.0.3 - Tap event
 * 0.0.4 - Adding styles to configuration page
+
+* 0.0.3 - Tap event
+
+* 0.0.2 - Notifications and accelerometer events
+
+* 0.0.1 - Button events
 
 ## Contribute
 
@@ -143,13 +139,12 @@ After app is installed, click on "Settings" and configure:
   * If you have local changes you may need to use “git stash”
   * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
 
-
 # Install from source
 
 * Install the pebble SDK [install instructions](https://developer.getpebble.com/2/)
 * Make sure you have installed latest Pebble 2.x app on your android or IOS phone.
 * Turn on "developer mode" in your app (on IOS this is in settings > pebble)
-* In your app you will now see a "developer" menu where you should enable listening on the phones ip address 
+* In your app you will now see a "developer" menu where you should enable listening on the phones ip address
 * Clone this repo `git clone https://github.com/hybridgroup/watchbot.git`
 * cd into the cloned repo folder `cd watchbot`
 * run `pebble build`
