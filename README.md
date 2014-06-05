@@ -6,101 +6,93 @@ With very few lines of code, you can:
 
 * Send notifications to your pebble:
 
-        my.pebble.send_notification("Hello Pebble!");
+```javascript
+my.pebble.send_notification("Hello Pebble!");
+```
 
 * Detect when a button is pushed:
 
-        my.pebble.on('button', function(data) {
-          console.log("Button pushed: " + data);
-        });
+```javascript
+my.pebble.on('button', function(data) {
+  console.log("Button pushed: " + data);
+});
+```
 
 * Tap events awareness:
 
-        my.pebble.on('tap', function(data) {
-          console.log("Tap event detected");
-        });
+```javascript
+my.pebble.on('tap', function(data) {
+  console.log("Tap event detected");
+});
+```
 
 * Get accelerometer data:
 
-        my.pebble.on('accel', function(data) {
-          console.log(data);
-        });
+```javascript
+my.pebble.on('accel', function(data) {
+  console.log(data);
+});
+```
 
 ### Full examples of how to interact with **watchbot**
 
 ##### Hello Pebble!
 
-        var Cylon = require('cylon');
+```javascript
+var Cylon = require('cylon');
 
-        Cylon.api({
-          host: '0.0.0.0',
-          port: '8080',
-          ssl:  false
-        });
+Cylon.robot({
+  name: 'pebble',
 
-        pebbleRobot = {
-          name: 'pebble',
+  connection: {
+    name: 'pebble',
+    adaptor: 'pebble'
+  },
 
-          connection: {
-            name: 'pebble',
-            adaptor: 'pebble'
-          },
+  device: {
+    name: 'pebble',
+    driver: 'pebble'
+  },
 
-          device: {
-            name: 'pebble',
-            driver: 'pebble'
-          },
+  work: function(my) {
+    my.pebble.send_notification("Hello Pebble!");
 
-          work: function(my) {
-            my.pebble.send_notification("Hello Pebble!");
+    my.pebble.on('button', function(data) {
+      console.log("Button pushed: " + data);
+    });
 
-            my.pebble.on('button', function(data) {
-              console.log("Button pushed: " + data);
-            });
-
-            my.pebble.on('tap', function(data) {
-              console.log("Tap event detected");
-            });
-          }
-
-        }
-
-        Cylon.robot(pebbleRobot);
-        Cylon.start();
+    my.pebble.on('tap', function(data) {
+      console.log("Tap event detected");
+    });
+  }
+}).start();
+```
 
 ##### Accelerometer
 
-        var Cylon = require('cylon');
+```javascript
+var Cylon = require('cylon');
 
-        Cylon.api({
-          host: '0.0.0.0',
-          port: '8080',
-          ssl:  false
-        });
+Cylon.robot({
+  name: 'pebble',
 
-        pebbleRobot = {
-          name: 'pebble',
+  connection: {
+    name: 'pebble',
+    adaptor: 'pebble'
+  },
 
-          connection: {
-            name: 'pebble',
-            adaptor: 'pebble'
-          },
+  device: {
+    name: 'pebble',
+    driver: 'pebble'
+  },
 
-          device: {
-            name: 'pebble',
-            driver: 'pebble'
-          },
-
-          work: function(my) {
-            my.pebble.on('accel', function(data) {
-              console.log(data);
-            });
-          }
-
-        }
-
-        Cylon.robot(pebbleRobot);
-        Cylon.start();
+  work: function(my) {
+    my.pebble.on('accel', function(data) {
+      console.log(data);
+    });
+  }
+}).start();
+```
 
 ### More information about pebble drivers/adaptors
 
