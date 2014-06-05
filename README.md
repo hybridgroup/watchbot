@@ -104,8 +104,9 @@ Cylon.robot({
 
 [![watchbot appstore](http://new.tinygrab.com/089df54f8fa9653cbc03459bef1dc11352cd2e4fc6.png)](https://apps.getpebble.com/applications/52b11885b0661fb292000004)
 
-* Link to pebble appstore: https://apps.getpebble.com/applications/52b11885b0661fb292000004
-* Open this link from your phone: pebble://appstore/52b11885b0661fb292000004
+You can find Watchbot in the [Pebble Appstore][appstore], or add it directly to your phone's Pebble app with this link: pebble://appstore/52b11885b0661fb292000004
+
+[appstore]: https://apps.getpebble.com/applications/52b11885b0661fb292000004
 
 # Configure
 
@@ -117,10 +118,13 @@ After app is installed, click on "Settings" and configure:
 
 # Releases
 
-* 0.0.1 - Button events
-* 0.0.2 - Notifications and accelerometer events
-* 0.0.3 - Tap event
 * 0.0.4 - Adding styles to configuration page
+
+* 0.0.3 - Tap event
+
+* 0.0.2 - Notifications and accelerometer events
+
+* 0.0.1 - Button events
 
 ## Contribute
 
@@ -134,7 +138,6 @@ After app is installed, click on "Settings" and configure:
   * If there are commits after yours use “git rebase -i <new_head_branch>”
   * If you have local changes you may need to use “git stash”
   * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
-
 
 # Install from source
 
