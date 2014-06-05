@@ -19,7 +19,7 @@ With very few lines of code, you can:
         my.pebble.on('tap', function(data) {
           console.log("Tap event detected");
         });
-        
+
 * Get accelerometer data:
 
         my.pebble.on('accel', function(data) {
@@ -45,24 +45,24 @@ With very few lines of code, you can:
             name: 'pebble',
             adaptor: 'pebble'
           },
-        
+
           device: {
             name: 'pebble',
             driver: 'pebble'
           },
-        
+
           work: function(my) {
             my.pebble.send_notification("Hello Pebble!");
-        
+
             my.pebble.on('button', function(data) {
               console.log("Button pushed: " + data);
             });
-        
+
             my.pebble.on('tap', function(data) {
               console.log("Tap event detected");
             });
           }
-        
+
         }
 
         Cylon.robot(pebbleRobot);
@@ -85,18 +85,18 @@ With very few lines of code, you can:
             name: 'pebble',
             adaptor: 'pebble'
           },
-        
+
           device: {
             name: 'pebble',
             driver: 'pebble'
           },
-        
+
           work: function(my) {
             my.pebble.on('accel', function(data) {
               console.log(data);
             });
           }
-        
+
         }
 
         Cylon.robot(pebbleRobot);
@@ -149,7 +149,7 @@ After app is installed, click on "Settings" and configure:
 * Install the pebble SDK [install instructions](https://developer.getpebble.com/2/)
 * Make sure you have installed latest Pebble 2.x app on your android or IOS phone.
 * Turn on "developer mode" in your app (on IOS this is in settings > pebble)
-* In your app you will now see a "developer" menu where you should enable listening on the phones ip address 
+* In your app you will now see a "developer" menu where you should enable listening on the phones ip address
 * Clone this repo `git clone https://github.com/hybridgroup/watchbot.git`
 * cd into the cloned repo folder `cd watchbot`
 * run `pebble build`
