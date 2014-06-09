@@ -56,6 +56,11 @@
           <textarea cols="24" name="message-command" id="message-command"></textarea>
         </div>
 
+        <div data-role="fieldcontain">
+          <label for="accelerometer">Accelerometer events:</label>
+          <input type="checkbox" name="accelerometer" id="accelerometer" />
+        </div>
+
         <br/>
         <div class="ui-body ui-body-b">
           <button type="submit" data-theme="a" id="b-submit">Submit</button>
@@ -73,6 +78,7 @@
           document.getElementById("device").value  = DEVICE;
           document.getElementById("publish-command").value = PUBLISH_COMMAND;
           document.getElementById("message-command").value = MESSAGE_COMMAND;
+          document.getElementById("accelerometer").checked = true;
         };
 
         function saveOptions() {
@@ -83,7 +89,8 @@
             "port":    document.getElementById("port").value,
             "device":  document.getElementById("device").value,
             "publishCommand": document.getElementById("publish-command").value,
-            "messageCommand": document.getElementById("messagecommand").value
+            "messageCommand": document.getElementById("messagecommand").value,
+            "accelerometer": document.getElementById("accelerometer").checked
           };
           return options;
         }

@@ -38,6 +38,8 @@ my.pebble.on('accel', function(data) {
 
 ##### Hello Pebble!
 
+* Make sure you have NOT checked "Accelerometer events" in configuration page
+
 ```javascript
 var Cylon = require('cylon');
 
@@ -77,6 +79,8 @@ Cylon.start();
 ```
 
 ##### Accelerometer
+
+* Make sure you have checked "Accelerometer events" in configuration page
 
 ```javascript
 var Cylon = require('cylon');
@@ -131,8 +135,12 @@ After app is installed, click on "Settings" and configure:
 * robot name
 * robot api host
 * robot api port
+* robot command names
+* accelerometer support on/off
 
 # Releases
+
+* 0.0.5 - Accelerometer events on/off and refactoring
 
 * 0.0.4 - Adding styles to configuration page
 
