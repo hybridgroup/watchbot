@@ -37,22 +37,22 @@ static void send_accel_msg() {
   char y[5];
   char z[5];
   char msg[20];
-  
+
   AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
   accel_service_peek(&accel);
-  
+
   itoa(accel.x, x);
   itoa(accel.y, y);
   itoa(accel.z, z);
-  
+
   strcpy(msg, x);
   strcat(msg, ",");
   strcat(msg, y);
   strcat(msg, ",");
   strcat(msg, z);
-  
+
   send_event_msg(msg);
-} 
+}
 
 static void timer_callback(void *data) {
   send_accel_msg();
@@ -67,7 +67,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
   send_event_msg("up");
 }
- 
+
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
   send_event_msg("down");
 }
@@ -131,9 +131,9 @@ static void init(void) {
   timer = app_timer_register(STEP_MS, timer_callback, NULL);
   window_set_click_config_provider(window, click_config_provider);
   window_set_window_handlers(window, (WindowHandlers) {
-    .load = window_load,
-    .unload = window_unload,
-  });
+      .load = window_load,
+      .unload = window_unload,
+      });
   const bool animated = true;
   window_stack_push(window, animated);
 }
@@ -148,7 +148,7 @@ int main(void) {
   init();
 
   APP_LOG(APP_LOG_LEVEL_DEBUG, "Done initializing, pushed window: %p", window);
-  
+
   app_event_loop();
   deinit();
 }
