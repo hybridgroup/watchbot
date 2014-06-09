@@ -1,11 +1,15 @@
 #include <pebble.h>
 #include <utils.h>
 
-#define STEP_MS 300
+#define STEP_MS 150
 
 static Window *window;
 static TextLayer *message_layer;
 static AppTimer *timer;
+int up;
+int down;
+int select;
+int tap;
 
 enum {
   QUOTE_KEY_MESSAGE = 0x1,
@@ -55,21 +59,37 @@ static void send_accel_msg() {
 }
 
 static void timer_callback(void *data) {
-  send_accel_msg();
+
+  if(up == 1) {
+    send_event_msg("up");
+    up = 0;
+  } else if(down == 1) {
+    send_event_msg("down");
+    down = 0;
+  } else if(select == 1) {
+    send_event_msg("select");
+    select = 0;
+  } else if(tap == 1) {
+    send_event_msg("tap");
+    tap = 0;
+  } else {
+    send_accel_msg();
+  }
 
   timer = app_timer_register(STEP_MS, timer_callback, NULL);
+
 }
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
-  send_event_msg("select");
+  select = 1;
 }
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
-  send_event_msg("up");
+  up = 1;
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  send_event_msg("down");
+  down = 1;
 }
 
 static void click_config_provider(void *context) {
@@ -79,7 +99,7 @@ static void click_config_provider(void *context) {
 }
 
 static void accel_tap_handler(AccelAxisType axis, int32_t direction) {
-  send_event_msg("tap");
+  tap = 1;
 }
 
 static void in_received_handler(DictionaryIterator *iter, void *context) {
