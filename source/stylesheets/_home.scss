@@ -37,3 +37,23 @@
     }
   }
 }
+
+.how-it-works {
+  background: #FDF9EF url('/images/bg-infographic.png') center bottom repeat-x;
+  border-top: 5px solid #F5F5F5;
+
+  .title {
+    text-align: center;
+    margin: 50px 0 0px 0;
+    color: #505050;
+  }
+
+  .container {
+    padding: 0;
+  }
+  
+  img {
+    width: 100%;
+    padding-bottom: 11px;
+  }
+}
