@@ -497,25 +497,26 @@ footer {
     padding: 20px 30px;
     border-radius: 6px;
     box-shadow: inset 0px 1px 1px 0px #C7E6A3;
-    display: inline-block; }
-    /* line 34, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+    display: inline-block;
+    margin: 8px 3px; }
+    /* line 35, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
     .hero .action:hover {
       box-shadow: none;
       background: #b8db8f; }
 
-/* line 41, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+/* line 42, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
 .how-it-works {
   background: #fdf9ef url("/images/bg-infographic.png") center bottom repeat-x;
   border-top: 5px solid #F5F5F5; }
-  /* line 45, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  /* line 46, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
   .how-it-works .title {
     text-align: center;
     margin: 50px 0 0px 0;
     color: #505050; }
-  /* line 51, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  /* line 52, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
   .how-it-works .container {
     padding: 0; }
-  /* line 55, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
+  /* line 56, /Users/mario/Dev/HybridGroup/watchbot/source/stylesheets/_home.scss */
   .how-it-works img {
     width: 100%;
     padding-bottom: 11px; }
