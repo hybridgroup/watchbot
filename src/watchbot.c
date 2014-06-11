@@ -1,7 +1,7 @@
 #include <pebble.h>
 #include <utils.h>
 
-#define STEP_MS 300
+#define STEP_MS 1000
 
 static Window *window;
 static TextLayer *message_layer;
@@ -10,13 +10,11 @@ static AppTimer *timer;
 enum {
   QUOTE_KEY_MESSAGE = 0x1,
   QUOTE_KEY_FETCH = 0x2,
+  QUOTE_KEY_ACCEL = 0x3,
 };
 
-static void send_event_msg(char *message) {
-  char *data;
-
+static void send_fetch_msg() {
   Tuplet fetch_tuple = TupletInteger(QUOTE_KEY_FETCH, 1);
-  Tuplet message_tuple = TupletCString(QUOTE_KEY_MESSAGE, message);
 
   DictionaryIterator *iter;
   app_message_outbox_begin(&iter);
@@ -26,24 +24,43 @@ static void send_event_msg(char *message) {
   }
 
   dict_write_tuplet(iter, &fetch_tuple);
+  dict_write_end(iter);
+
+  app_message_outbox_send();
+}
+
+static void timer_callback(void *data) {
+  send_fetch_msg();
+
+  timer = app_timer_register(STEP_MS, timer_callback, NULL);
+}
+
+static void send_event_msg(char *message) {
+  char *data;
+
+  Tuplet message_tuple = TupletCString(QUOTE_KEY_MESSAGE, message);
+
+  DictionaryIterator *iter;
+  app_message_outbox_begin(&iter);
+
+  if (iter == NULL) {
+    return;
+  }
+
   dict_write_tuplet(iter, &message_tuple);
   dict_write_end(iter);
 
   app_message_outbox_send();
 }
 
-static void send_accel_msg() {
+static void accel_data_handler(AccelData *data, uint32_t num_samples) {
   char x[5];
   char y[5];
   char z[5];
   char msg[20];
-
-  AccelData accel = (AccelData) { .x = 0, .y = 0, .z = 0 };
-  accel_service_peek(&accel);
-
-  itoa(accel.x, x);
-  itoa(accel.y, y);
-  itoa(accel.z, z);
+  itoa(data[0].x, x);
+  itoa(data[0].y, y);
+  itoa(data[0].z, z);
 
   strcpy(msg, x);
   strcat(msg, ",");
@@ -52,12 +69,6 @@ static void send_accel_msg() {
   strcat(msg, z);
 
   send_event_msg(msg);
-}
-
-static void timer_callback(void *data) {
-  send_accel_msg();
-
-  timer = app_timer_register(STEP_MS, timer_callback, NULL);
 }
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -84,9 +95,17 @@ static void accel_tap_handler(AccelAxisType axis, int32_t direction) {
 
 static void in_received_handler(DictionaryIterator *iter, void *context) {
   Tuple *message_tuple = dict_find(iter, QUOTE_KEY_MESSAGE);
+  Tuple *accel_tuple   = dict_find(iter, QUOTE_KEY_ACCEL);
 
   if (message_tuple) {
     text_layer_set_text(message_layer, message_tuple->value->cstring);
+  }
+
+  if (accel_tuple) {
+    APP_LOG(APP_LOG_LEVEL_INFO, accel_tuple->value->cstring);
+    accel_service_set_sampling_rate(ACCEL_SAMPLING_25HZ);
+    accel_service_set_samples_per_update(1);
+    accel_data_service_subscribe(1, &accel_data_handler);
   }
 }
 
@@ -99,12 +118,10 @@ static void out_failed_handler(DictionaryIterator *failed, AppMessageResult reas
 }
 
 static void app_message_init(void) {
-  // Register message handlers
   app_message_register_inbox_received(in_received_handler);
   app_message_register_inbox_dropped(in_dropped_handler);
   app_message_register_outbox_failed(out_failed_handler);
-  // Init buffers
-  app_message_open(64, 64);
+  app_message_open(APP_MESSAGE_INBOX_SIZE_MINIMUM, APP_MESSAGE_OUTBOX_SIZE_MINIMUM);
 }
 
 static void window_load(Window *window) {
@@ -127,13 +144,13 @@ static void init(void) {
   window = window_create();
   app_message_init();
   accel_tap_service_subscribe(&accel_tap_handler);
-  accel_data_service_subscribe(0, NULL);
-  timer = app_timer_register(STEP_MS, timer_callback, NULL);
   window_set_click_config_provider(window, click_config_provider);
+  timer  = app_timer_register(STEP_MS, timer_callback, NULL);
+
   window_set_window_handlers(window, (WindowHandlers) {
       .load = window_load,
       .unload = window_unload,
-      });
+  });
   const bool animated = true;
   window_stack_push(window, animated);
 }
@@ -146,9 +163,6 @@ static void deinit(void) {
 
 int main(void) {
   init();
-
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "Done initializing, pushed window: %p", window);
-
   app_event_loop();
   deinit();
 }
