@@ -140,7 +140,7 @@ After app is installed, click on "Settings" and configure:
 
 # Releases
 
-* 0.0.5 - Accelerometer events on/off and refactoring
+* 0.1.0 - Accelerometer events on/off and refactoring
 
 * 0.0.4 - Adding styles to configuration page
 
