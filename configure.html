@@ -47,16 +47,6 @@
         </div>
 
         <div data-role="fieldcontain">
-          <label for="publish-command">Robot API publish command:</label>
-          <textarea cols="24" name="publish-command" id="publish-command"></textarea>
-        </div>
-
-        <div data-role="fieldcontain">
-          <label for="message-command">Robot API message command:</label>
-          <textarea cols="24" name="message-command" id="message-command"></textarea>
-        </div>
-
-        <div data-role="fieldcontain">
           <label for="accelerometer">Accelerometer events:</label>
           <input type="checkbox" name="accelerometer" id="accelerometer" />
         </div>
@@ -76,8 +66,6 @@
           document.getElementById("host").value    = HOST;
           document.getElementById("port").value    = PORT;
           document.getElementById("device").value  = DEVICE;
-          document.getElementById("publish-command").value = PUBLISH_COMMAND;
-          document.getElementById("message-command").value = MESSAGE_COMMAND;
           document.getElementById("accelerometer").checked = true;
         };
 
@@ -88,8 +76,6 @@
             "host":    document.getElementById("host").value,
             "port":    document.getElementById("port").value,
             "device":  document.getElementById("device").value,
-            "publishCommand": document.getElementById("publish-command").value,
-            "messageCommand": document.getElementById("messagecommand").value,
             "accelerometer": document.getElementById("accelerometer").checked
           };
           return options;

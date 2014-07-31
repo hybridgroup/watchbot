@@ -63,7 +63,7 @@ Cylon.robot({
   },
 
   work: function(my) {
-    my.pebble.send_notification("Hello Pebble!");
+    my.pebble.sendNotification("Hello Pebble!");
 
     my.pebble.on('button', function(data) {
       console.log("Button pushed: " + data);
@@ -135,10 +135,11 @@ After app is installed, click on "Settings" and configure:
 * robot name
 * robot api host
 * robot api port
-* robot command names
 * accelerometer support on/off
 
 # Releases
+
+* 0.2.0 - Compatible with CPPP.io robot API
 
 * 0.1.0 - Accelerometer events on/off and refactoring
 
