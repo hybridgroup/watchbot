@@ -1,22 +1,19 @@
 {
     "longName": "watchbot",
-    "versionCode": 1,
+    "versionCode": 2,
     "shortName": "watchbot",
     "capabilities": [
         "configurable"
     ],
+    "projectType": "pebblejs",
     "resources": {
         "media": []
     },
-    "versionLabel": "0.2",
+    "versionLabel": "2.0",
     "watchapp": {
         "watchface": false
     },
     "uuid": "e5b1a444-a47c-4dc4-bc91-601eccf4eab7",
-    "appKeys": {
-        "message": 1,
-        "fetch": 2,
-        "accel": 3
-    },
+    "appKeys": {},
     "companyName": "The Hybrid Group"
 }
