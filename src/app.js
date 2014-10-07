@@ -118,7 +118,7 @@ main.on('select', function(e) {
         var data = accel.x + "," + accel.y + "," + accel.z;
         publishEvent("accel", data);
       });
-    } else if (e.itemIndex === 1) {
+    } else if (e.itemIndex === 2) {
       var commands = new UI.Card();
       commands.title('Coming soon');
       commands.show();
