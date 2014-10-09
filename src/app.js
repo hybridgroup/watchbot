@@ -1,6 +1,7 @@
 var UI = require('ui');
 var Accel = require('ui/accel');
 var Settings = require('settings');
+var robotCommands = [];
 
 function getUrlFor(command){
   var name    = Settings.data('name');
@@ -11,6 +12,14 @@ function getUrlFor(command){
   return host + ":" + port + "/api/robots/" + name + "/devices/" + device + "/commands/" + command;
 }
 
+function getRobotUrlFor(command){
+  var name    = Settings.data('name');
+  var host    = Settings.data('host');
+  var port    = Settings.data('port');
+
+  return host + ":" + port + "/api/robots/" + name + "/commands/" + command;
+}
+
 function publishEvent(event_name, data) {
   var params = '{"name":"' + event_name+ '", "data":"' + data + '"}';
   var req    = new XMLHttpRequest();
@@ -18,6 +27,14 @@ function publishEvent(event_name, data) {
   req.open('POST', getUrlFor('publish_event'), true);
   req.setRequestHeader("Content-type", "application/json");
   req.send(params);
+}
+
+function executeRobotCommand(command) {
+  var req    = new XMLHttpRequest();
+
+  req.open('POST', getRobotUrlFor(command), true);
+  req.setRequestHeader("Content-type", "application/json");
+  req.send();
 }
 
 function pollForMessages() {
@@ -44,8 +61,25 @@ function pollForMessages() {
   }, 600);
 }
 
+function getRobotCommands() {
+  var req = new XMLHttpRequest();
+
+  req.open('GET', getRobotUrlFor(''), true);
+  req.onload = function(e) {
+
+    if (req.readyState == 4) {
+      if(req.status == 200) {
+        var response = JSON.parse(req.responseText);
+        robotCommands = response.commands;
+      }
+    }
+  };
+  req.send(null);
+}
+
 Pebble.addEventListener("ready", function() {
   pollForMessages();
+  getRobotCommands();
 });
 
 Pebble.addEventListener("showConfiguration", function() {
@@ -81,7 +115,7 @@ var main = new UI.Menu({
       subtitle: 'Get accelerometer information'
      }, {
       title: 'Commands',
-      subtitle: 'Execute custom actions'
+      subtitle: 'Execute custom robot commands'
      }]
    }]
 });
@@ -117,10 +151,31 @@ main.on('select', function(e) {
         publishEvent("accel", data);
       });
     } else if (e.itemIndex === 2) {
-      var commands = new UI.Card();
-      commands.title('Coming soon');
-      commands.show();
+      if (robotCommands.length > 0) {
+        var items = [];
+
+        robotCommands.forEach(function(c) {
+          items.push({title: c});
+        });
+
+        var commands = new UI.Menu({
+          sections: [{
+            items: items
+          }]
+        });
+
+        commands.on('select', function(e) {
+          executeRobotCommand(robotCommands[e.itemIndex]);
+        });
+
+        commands.show();
+      } else {
+        var commands = new UI.Card();
+        commands.title('No commands found');
+        commands.subtitle('Verify server is running');
+        commands.show();
+      }
     }
-  });
+});
 
 main.show();
