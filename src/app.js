@@ -109,13 +109,13 @@ var main = new UI.Menu({
   sections: [{
     items: [{
       title: 'Events',
-      subtitle: 'Listen to button + tap events'
+      subtitle: 'Listen to events'
      }, {
       title: 'Accelerometer',
-      subtitle: 'Get accelerometer information'
+      subtitle: 'Get accel info'
      }, {
       title: 'Commands',
-      subtitle: 'Execute custom robot commands'
+      subtitle: 'Execute commands'
      }]
    }]
 });
@@ -141,8 +141,8 @@ main.on('select', function(e) {
       });
     } else if (e.itemIndex === 1) {
       var accel = new UI.Card();
-      accel.title('Accelerometer');
-      accel.subtitle('Sending data');
+      accel.subtitle('Accelerometer');
+      accel.body('Sending data');
       accel.show();
 
       accel.on('accelData', function(e) {
@@ -171,8 +171,8 @@ main.on('select', function(e) {
         commands.show();
       } else {
         var commands = new UI.Card();
-        commands.title('No commands found');
-        commands.subtitle('Verify server is running');
+        commands.subtitle('No commands found');
+        commands.body('Verify server is running');
         commands.show();
       }
     }
