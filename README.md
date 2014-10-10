@@ -38,8 +38,6 @@ my.pebble.on('accel', function(data) {
 
 ##### Hello Pebble!
 
-* Make sure you have NOT checked "Accelerometer events" in configuration page
-
 ```javascript
 var Cylon = require('cylon');
 
@@ -79,8 +77,6 @@ Cylon.start();
 ```
 
 ##### Accelerometer
-
-* Make sure you have checked "Accelerometer events" in configuration page
 
 ```javascript
 var Cylon = require('cylon');
@@ -135,9 +131,18 @@ After app is installed, click on "Settings" and configure:
 * robot name
 * robot api host
 * robot api port
-* accelerometer support on/off
+
+# Usage
+
+Watchbot has 3 main sections:
+
+* Events: Listen to tap and button events.
+* Accelerometer: Send x/y/z accel data to your programs.
+* Commands: Execute custom commands defined in your robot.
 
 # Releases
+
+* 2.0 - Adding menu to listen to events, execute commands or send accel information. Using pebblejs.
 
 * 0.2.0 - Compatible with CPPP.io robot API
 
