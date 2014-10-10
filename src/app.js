@@ -64,9 +64,8 @@ function pollForMessages() {
 function getRobotCommands() {
   var req = new XMLHttpRequest();
 
-  req.open('GET', getRobotUrlFor(''), true);
+  req.open('GET', getRobotUrlFor(''), false);
   req.onload = function(e) {
-
     if (req.readyState == 4) {
       if(req.status == 200) {
         var response = JSON.parse(req.responseText);
@@ -74,12 +73,16 @@ function getRobotCommands() {
       }
     }
   };
-  req.send(null);
+
+  try {
+    req.send(null);
+  } catch(err) {
+    robotCommands = [];
+  }
 }
 
 Pebble.addEventListener("ready", function() {
   pollForMessages();
-  getRobotCommands();
 });
 
 Pebble.addEventListener("showConfiguration", function() {
@@ -151,6 +154,7 @@ main.on('select', function(e) {
         publishEvent("accel", data);
       });
     } else if (e.itemIndex === 2) {
+      getRobotCommands();
       if (robotCommands.length > 0) {
         var items = [];
 
