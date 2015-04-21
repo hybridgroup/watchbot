@@ -2,6 +2,7 @@ var UI = require('ui');
 var Accel = require('ui/accel');
 var Settings = require('settings');
 var robotCommands = [];
+var options = {};
 
 function getUrlFor(command){
   var name    = Settings.data('name');
@@ -165,10 +166,10 @@ main.on('select', function(e) {
 
         commands.show();
       } else {
-        var commands = new UI.Card();
-        commands.subtitle('No commands found');
-        commands.body('Verify server is running');
-        commands.show();
+        var command = new UI.Card();
+        command.subtitle('No commands found');
+        command.body('Verify server is running');
+        command.show();
       }
     }
 });
