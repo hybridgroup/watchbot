@@ -84,7 +84,7 @@ function getRobotCommands() {
 pollForMessages();
 
 Pebble.addEventListener("showConfiguration", function() {
-  Pebble.openURL('http://watchbot.io/configure.html?'+encodeURIComponent(JSON.stringify(options)));
+  Pebble.openURL('http://watchbot.io/configure/index.html?'+encodeURIComponent(JSON.stringify(options)));
 });
 
 Pebble.addEventListener("webviewclosed", function(e) {
