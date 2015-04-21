@@ -103,20 +103,22 @@ Accel.config({rate: 10, samples: 1});
 var main = new UI.Menu({
   sections: [{
     items: [{
-      title: 'Events',
-      subtitle: 'Listen to events'
-     }, {
-      title: 'Accelerometer',
-      subtitle: 'Get accel info'
-     }, {
       title: 'Commands',
       subtitle: 'Execute commands'
+     },
+     {
+      title: 'Events',
+      subtitle: 'Listen to events'
+     },
+     {
+      title: 'Accelerometer',
+      subtitle: 'Get accel info'
      }]
    }]
 });
 
 main.on('select', function(e) {
-    if (e.itemIndex === 0) {
+    if (e.itemIndex === 1) {
       var events = new UI.Card();
       events.title('Events');
       events.subtitle('Listening to bottons and tap');
@@ -134,7 +136,7 @@ main.on('select', function(e) {
       events.on('accelTap', function(e) {
        publishEvent("tap", "");
       });
-    } else if (e.itemIndex === 1) {
+    } else if (e.itemIndex === 2) {
       var accel = new UI.Card();
       accel.subtitle('Accelerometer');
       accel.body('Sending data');
@@ -145,7 +147,7 @@ main.on('select', function(e) {
         var data = accel.x + "," + accel.y + "," + accel.z;
         publishEvent("accel", data);
       });
-    } else if (e.itemIndex === 2) {
+    } else if (e.itemIndex === 0) {
       getRobotCommands();
       if (robotCommands.length > 0) {
         var items = [];
