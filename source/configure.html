@@ -3,7 +3,10 @@
   <head> 
     <title>Watchbot Configuration</title> 
     <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>    
   </head> 
   <style> body, textarea, button { font-size: 20px; font-family: monospace; text-align: center; } textarea { resize: none; padding-top: 15px; } button { padding: 15px; } 
   </style> 
@@ -36,14 +39,6 @@
       </div> 
     </div> 
     <script> 
-      window.onload = function () { 
-        "use strict"; 
-        document.getElementById("name").value    = NAME; 
-        document.getElementById("host").value    = HOST; 
-        document.getElementById("port").value    = PORT; 
-        document.getElementById("device").value  = DEVICE;
-      }; 
-
       function saveOptions() { 
         "use strict"; 
         var options = { 
@@ -55,13 +50,24 @@
         return options; 
       } 
 
-      document.getElementById("b-submit").addEventListener("click", function () { 
-        "use strict"; 
-        console.log("Submit"); 
-        var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(saveOptions())); 
-        console.log("Warping to: " + location);
-        document.location = location; 
-      }); 
+      $().ready(function() {
+        $("#b-cancel").click(function() {
+          console.log("Cancel");
+          document.location = "pebblejs://close";
+        });
+        $("#b-submit").click(function() {
+          console.log("Submit");
+          var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(saveOptions()));
+          console.log("Warping to: " + location);
+          console.log(location);
+          document.location = location;
+        });
+        //Set form values to whatever is passed in.
+        var obj = jQuery.parseJSON(decodeURIComponent(window.location.search.substring(1)));
+        for(key in obj) {
+          $("#"+[key]).val(obj[key]);
+        }
+      });
     </script> 
   </body> 
 </html>
