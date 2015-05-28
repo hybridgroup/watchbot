@@ -2,7 +2,6 @@ var UI = require('ui');
 var Accel = require('ui/accel');
 var Settings = require('settings');
 var robotCommands = [];
-var options = {};
 
 function getUrlFor(command){
   var name    = Settings.data('name');
@@ -41,22 +40,25 @@ function executeRobotCommand(command) {
 function pollForMessages() {
   var req = new XMLHttpRequest();
 
-  req.open('GET', getUrlFor('pending_message'), true);
-  req.onload = function(e) {
-    if (req.readyState == 4) {
-      if(req.status == 200) {
-        var response = JSON.parse(req.responseText);
-        var message = response.result;
-        if (message !== null && message !== '') {
-          console.log(message);
-          Pebble.showSimpleNotificationOnPebble("Robot", message.toString());
+  if (Settings.data('host')) {
+    req.open('GET', getUrlFor('pending_message'), true);
+    req.onreadystatechange = function(e) {
+      if (req.readyState == 4) {
+        if(req.status == 200) {
+          var response = JSON.parse(req.responseText);
+          var message = response.result;
+          if (message !== null && message !== '') {
+            console.log(message);
+            Pebble.showSimpleNotificationOnPebble("Robot", message.toString());
+          }
+        } else {
+          console.log("Error");
         }
-      } else {
-        console.log("Error");
       }
-    }
-  };
-  req.send(null);
+    };
+    req.send(null);
+  }
+  
   setTimeout(function() {
     pollForMessages();
   }, 600);
@@ -66,7 +68,7 @@ function getRobotCommands() {
   var req = new XMLHttpRequest();
 
   req.open('GET', getRobotUrlFor(''), false);
-  req.onload = function(e) {
+  req.onreadystatechange = function(e) {
     if (req.readyState == 4) {
       if(req.status == 200) {
         var response = JSON.parse(req.responseText);
@@ -85,16 +87,25 @@ function getRobotCommands() {
 pollForMessages();
 
 Pebble.addEventListener("showConfiguration", function() {
+  var options = {
+    name: Settings.data('name'),
+    host: Settings.data('host'),
+    port: Settings.data('port'),
+    device: Settings.data('device')
+  }
+
   Pebble.openURL('http://watchbot.io/configure/index.html?'+encodeURIComponent(JSON.stringify(options)));
 });
 
 Pebble.addEventListener("webviewclosed", function(e) {
   var options = JSON.parse(decodeURIComponent(e.response));
 
-  Settings.data('host', options.host);
-  Settings.data('name', options.name);
-  Settings.data('port', options.port);
-  Settings.data('device', options.device);
+  if (!options.canceled){
+    Settings.data('host', options.host);
+    Settings.data('name', options.name);
+    Settings.data('port', options.port);
+    Settings.data('device', options.device);
+  }
 });
 
 Accel.init();
