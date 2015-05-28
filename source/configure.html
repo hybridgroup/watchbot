@@ -34,7 +34,8 @@
         </div>
         <br/> 
         <div class="ui-body ui-body-b"> 
-          <button type="submit" data-theme="a" id="b-submit">Submit</button> 
+          <button type="submit" data-theme="c" id="b-cancel">Cancel</button>
+          <button type="submit" data-theme="a" id="b-submit">Submit</button>
         </div> 
       </div> 
     </div> 
@@ -52,20 +53,20 @@
 
       $().ready(function() {
         $("#b-cancel").click(function() {
-          console.log("Cancel");
-          document.location = "pebblejs://close";
+          document.location = "pebblejs://close#" + encodeURIComponent(JSON.stringify({canceled:true}));
         });
         $("#b-submit").click(function() {
-          console.log("Submit");
           var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(saveOptions()));
-          console.log("Warping to: " + location);
-          console.log(location);
           document.location = location;
         });
+        
         //Set form values to whatever is passed in.
-        var obj = jQuery.parseJSON(decodeURIComponent(window.location.search.substring(1)));
-        for(key in obj) {
-          $("#"+[key]).val(obj[key]);
+        var params = window.location.search.substring(1);
+        if(params.length > 0){
+          var obj = jQuery.parseJSON(decodeURIComponent(window.location.search.substring(1)));
+          for(key in obj) {
+            $("#"+[key]).val(obj[key]);
+          }
         }
       });
     </script> 
