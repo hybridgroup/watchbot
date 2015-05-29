@@ -1,19 +1,46 @@
 {
-    "longName": "watchbot",
-    "versionCode": 2,
-    "shortName": "watchbot",
-    "capabilities": [
-        "configurable"
-    ],
-    "projectType": "pebblejs",
-    "resources": {
-        "media": []
-    },
-    "versionLabel": "2.2",
-    "watchapp": {
-        "watchface": false
-    },
-    "uuid": "e5b1a444-a47c-4dc4-bc91-601eccf4eab7",
-    "appKeys": {},
-    "companyName": "The Hybrid Group"
+  "sdkVersion": "3",
+  "longName": "watchbot",
+  "shortName": "watchbot",
+  "versionCode": 3,
+  "versionLabel": "3.0",
+  "capabilities": [
+    "configurable"
+  ],
+  "targetPlatforms": [
+    "aplite",
+    "basalt"
+  ],
+  "projectType": "pebblejs",
+  "resources": {
+    "media": [
+      {
+        "menuIcon": true,
+        "type": "png",
+        "name": "IMAGE_MENU_ICON",
+        "file": "images/menu_icon.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_LOGO_SPLASH",
+        "file": "images/logo_splash.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_TILE_SPLASH",
+        "file": "images/tile_splash.png"
+      },
+      {
+        "type": "font",
+        "name": "MONO_FONT_14",
+        "file": "fonts/UbuntuMono-Regular.ttf"
+      }
+    ]
+  },
+  "watchapp": {
+    "watchface": false
+  },
+  "uuid": "e5b1a444-a47c-4dc4-bc91-601eccf4eab7",
+  "appKeys": {},
+  "companyName": "The Hybrid Group"
 }
