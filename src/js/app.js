@@ -109,7 +109,6 @@ Pebble.addEventListener("webviewclosed", function(e) {
 });
 
 Accel.init();
-Accel.config({rate: 10, samples: 1});
 
 var main = new UI.Menu({
   sections: [{
