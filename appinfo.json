@@ -1,10 +1,15 @@
 {
+    "sdkVersion": "3",
     "longName": "watchbot",
     "versionCode": 2,
     "shortName": "watchbot",
     "capabilities": [
         "configurable"
     ],
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+      ],
     "projectType": "pebblejs",
     "resources": {
         "media": []
