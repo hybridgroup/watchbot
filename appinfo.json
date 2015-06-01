@@ -1,6 +1,6 @@
 {
     "longName": "watchbot",
-    "versionCode": 2,
+    "versionCode": 3,
     "shortName": "watchbot",
     "capabilities": [
         "configurable"
@@ -9,7 +9,7 @@
     "resources": {
         "media": []
     },
-    "versionLabel": "2.2",
+    "versionLabel": "3.0",
     "watchapp": {
         "watchface": false
     },
