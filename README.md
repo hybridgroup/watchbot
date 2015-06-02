@@ -39,65 +39,61 @@ my.pebble.on('accel', function(data) {
 ##### Hello Pebble!
 
 ```javascript
-var Cylon = require('cylon');
+var Cylon = require("cylon");
 
 Cylon.api({
-  host: '0.0.0.0',
-  port: '8080',
-  ssl: false
+  host: "0.0.0.0",
+  port: "8080",
+  ssl:  false
 });
 
 Cylon.robot({
-  name: 'pebble',
+  name: "pebble",
 
-  connection: {
-    name: 'pebble',
-    adaptor: 'pebble'
+  connections: {
+    pebble: { adaptor: "pebble" }
   },
 
-  device: {
-    name: 'pebble',
-    driver: 'pebble'
+  devices: {
+    pebble: { driver: "pebble" }
   },
 
   work: function(my) {
     my.pebble.send_notification("Hello Pebble!");
 
-    my.pebble.on('button', function(data) {
+    my.pebble.on("button", function(data) {
       console.log("Button pushed: " + data);
     });
 
-    my.pebble.on('tap', function(data) {
+    my.pebble.on("tap", function() {
       console.log("Tap event detected");
     });
   }
-});
-
-Cylon.start();
+}).start();
 ```
 
 ##### Accelerometer
 
 ```javascript
-var Cylon = require('cylon');
+"use strict";
+
+var Cylon = require("cylon");
 
 Cylon.api({
-  host: '0.0.0.0',
-  port: '8080',
-  ssl: false
+  host: "0.0.0.0",
+  port: "8080",
+  ssl:  false
 });
 
 Cylon.robot({
-  name: 'pebble',
+  name: "pebble",
 
-  connection: {
-    name: 'pebble',
-    adaptor: 'pebble'
+  connections: {
+    pebble: { adaptor: "pebble" }
   },
 
-  device: {
-    name: 'pebble',
-    driver: 'pebble'
+  devices: {
+    pebble: { driver: "pebble" }
   },
 
   work: function(my) {
@@ -105,9 +101,7 @@ Cylon.robot({
       console.log(data);
     });
   }
-});
-
-Cylon.start();
+}).start();
 ```
 
 ### More information about pebble drivers/adaptors
@@ -131,16 +125,19 @@ After app is installed, click on "Settings" and configure:
 * robot name
 * robot api host
 * robot api port
+* device name
 
 # Usage
 
 Watchbot has 3 main sections:
 
+* Commands: Execute custom commands defined in your robot.
 * Events: Listen to tap and button events.
 * Accelerometer: Send x/y/z accel data to your programs.
-* Commands: Execute custom commands defined in your robot.
 
 # Releases
+
+* 2.3 - Updated to Pebble SDK 3.0, fixed config page on iOS.
 
 * 2.0 - Adding menu to listen to events, execute commands or send accel information. Using pebblejs.
 
@@ -177,15 +174,4 @@ Watchbot has 3 main sections:
 
 ## LICENSE
 
-Copyright (c) 2014 The Hybrid Group
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed
-under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
+Copyright (c) 2013-2015 The Hybrid Group. Licensed under the Apache 2.0 license
