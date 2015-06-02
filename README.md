@@ -171,14 +171,9 @@ Watchbot has 3 main sections:
 
 # Install from source
 
-* Install the pebble SDK [install instructions](https://developer.getpebble.com/2/)
-* Make sure you have installed latest Pebble 2.x app on your android or IOS phone.
-* Turn on "developer mode" in your app (on IOS this is in settings > pebble)
-* In your app you will now see a "developer" menu where you should enable listening on the phones ip address
-* Clone this repo `git clone https://github.com/hybridgroup/watchbot.git`
-* cd into the cloned repo folder `cd watchbot`
-* run `pebble build`
-* run `pebble install --phone IP_ADDRESS_OF_YOUR_PHONE` (you can find the ip of your phone in the developer mode mentioned above)
+* Sign into [pebble cloud](https://cloudpebble.net).
+* Create a new project from import: `github.com/hybridgroup/watchbot.git`
+* From Compilation menu, install and run into your own pebbel.
 
 ## LICENSE
 
