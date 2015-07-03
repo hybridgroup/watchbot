@@ -1,189 +1,201 @@
-var UI = require('ui');
-var Accel = require('ui/accel');
-var Settings = require('settings');
-var robotCommands = [];
+(function() {
+  "use strict";
 
-function getUrlFor(command){
-  var name    = Settings.data('name');
-  var host    = Settings.data('host');
-  var port    = Settings.data('port');
-  var device  = Settings.data('device');
+  var UI = require("ui");
+  var Accel = require("ui/accel");
+  var Settings = require("settings");
+  var robotCommands = [];
 
-  return host + ":" + port + "/api/robots/" + name + "/devices/" + device + "/commands/" + command;
-}
+  function getUrlFor(command) {
+    var name = Settings.data("name"),
+        host = Settings.data("host"),
+        port = Settings.data("port"),
+        device = Settings.data("device");
 
-function getRobotUrlFor(command){
-  var name    = Settings.data('name');
-  var host    = Settings.data('host');
-  var port    = Settings.data('port');
+    return host + ":" + port + "/api/robots/" + name + "/devices/" + device + "/commands/" + command;
+  }
 
-  return host + ":" + port + "/api/robots/" + name + "/commands/" + command;
-}
+  function getRobotUrlFor(command) {
+    var name = Settings.data("name"),
+        host = Settings.data("host"),
+        port = Settings.data("port");
 
-function publishEvent(event_name, data) {
-  var params = '{"name":"' + event_name+ '", "data":"' + data + '"}';
-  var req    = new XMLHttpRequest();
+    return host + ":" + port + "/api/robots/" + name + "/commands/" + command;
+  }
 
-  req.open('POST', getUrlFor('publish_event'), true);
-  req.setRequestHeader("Content-type", "application/json");
-  req.send(params);
-}
+  function publishEvent(name, data) {
+    var params = JSON.stringify({ name: name, data: data }),
+        req = new XMLHttpRequest();
 
-function executeRobotCommand(command) {
-  var req    = new XMLHttpRequest();
+    req.open("POST", getUrlFor("publish_event"), true);
+    req.setRequestHeader("Content-type", "application/json");
+    req.send(params);
+  }
 
-  req.open('POST', getRobotUrlFor(command), true);
-  req.setRequestHeader("Content-type", "application/json");
-  req.send();
-}
+  function executeRobotCommand(command) {
+    var req = new XMLHttpRequest();
 
-function pollForMessages() {
-  var req = new XMLHttpRequest();
+    req.open("POST", getRobotUrlFor(command), true);
+    req.setRequestHeader("Content-type", "application/json");
+    req.send();
+  }
 
-  if (Settings.data('host')) {
-    req.open('GET', getUrlFor('pending_message'), true);
-    req.onreadystatechange = function(e) {
-      if (req.readyState == 4) {
-        if(req.status == 200) {
-          var response = JSON.parse(req.responseText);
-          var message = response.result;
-          if (message !== null && message !== '') {
+  function pollForMessages() {
+    var req = new XMLHttpRequest();
+
+    if (Settings.data("host")) {
+      req.open("GET", getUrlFor("pending_message"), true);
+      req.onreadystatechange = function() {
+        if (req.readyState === 4) {
+          if (req.status !== 200) { return console.log("Error"); }
+
+          var message = JSON.parse(req.responseText).result;
+
+          if (message !== null && message !== "") {
             console.log(message);
             Pebble.showSimpleNotificationOnPebble("Robot", message.toString());
           }
-        } else {
-          console.log("Error");
         }
-      }
-    };
-    req.send(null);
+      };
+      req.send(null);
+    }
+
+    setTimeout(pollForMessages, 600);
   }
-  
-  setTimeout(function() {
-    pollForMessages();
-  }, 600);
-}
 
-function getRobotCommands() {
-  var req = new XMLHttpRequest();
+  function getRobotCommands() {
+    var req = new XMLHttpRequest();
 
-  req.open('GET', getRobotUrlFor(''), false);
-  req.onreadystatechange = function(e) {
-    if (req.readyState == 4) {
-      if(req.status == 200) {
+    req.open("GET", getRobotUrlFor(""), false);
+    req.onreadystatechange = function() {
+      if (req.readyState === 4 && req.status === 200) {
         var response = JSON.parse(req.responseText);
         robotCommands = response.commands;
       }
+    };
+
+    try {
+      req.send(null);
+    } catch(err) {
+      robotCommands = [];
     }
-  };
-
-  try {
-    req.send(null);
-  } catch(err) {
-    robotCommands = [];
   }
-}
 
-pollForMessages();
+  function showCommands() {
+    getRobotCommands();
+    if (robotCommands.length > 0) {
+      var items = [];
 
-Pebble.addEventListener("showConfiguration", function() {
-  var options = {
-    name: Settings.data('name'),
-    host: Settings.data('host'),
-    port: Settings.data('port'),
-    device: Settings.data('device')
-  };
-
-  Pebble.openURL('http://watchbot.io/configure/index.html?'+encodeURIComponent(JSON.stringify(options)));
-});
-
-Pebble.addEventListener("webviewclosed", function(e) {
-  var options = JSON.parse(decodeURIComponent(e.response));
-
-  if (!options.canceled){
-    Settings.data('host', options.host);
-    Settings.data('name', options.name);
-    Settings.data('port', options.port);
-    Settings.data('device', options.device);
-  }
-});
-
-Accel.init();
-
-var main = new UI.Menu({
-  sections: [{
-    items: [{
-      title: 'Commands',
-      subtitle: 'Execute commands'
-     },
-     {
-      title: 'Events',
-      subtitle: 'Listen to events'
-     },
-     {
-      title: 'Accelerometer',
-      subtitle: 'Get accel info'
-     }]
-   }]
-});
-
-main.on('select', function(e) {
-    if (e.itemIndex === 1) {
-      var events = new UI.Card();
-      events.title('Events');
-      events.subtitle('Listening to bottons and tap');
-      events.show();
-
-      events.on('click', 'up', function(e) {
-        publishEvent("button", "up");
+      robotCommands.forEach(function(c) {
+        items.push({title: c});
       });
-      events.on('click', 'select', function(e) {
-        publishEvent("button", "select");
+
+      var commands = new UI.Menu({
+        sections: [{
+          items: items
+        }]
       });
-      events.on('click', 'down', function(e) {
-        publishEvent("button", "down");
+
+      commands.on("select", function(e) {
+        executeRobotCommand(robotCommands[e.itemIndex]);
       });
-      events.on('accelTap', function(e) {
-       publishEvent("tap", "");
-      });
-    } else if (e.itemIndex === 2) {
-      var accel = new UI.Card();
-      accel.subtitle('Accelerometer');
-      accel.body('Sending data');
-      accel.show();
 
-      accel.on('accelData', function(e) {
-        var accel = e.accels[0];
-        var data = accel.x + "," + accel.y + "," + accel.z;
-        publishEvent("accel", data);
-      });
-    } else if (e.itemIndex === 0) {
-      getRobotCommands();
-      if (robotCommands.length > 0) {
-        var items = [];
-
-        robotCommands.forEach(function(c) {
-          items.push({title: c});
-        });
-
-        var commands = new UI.Menu({
-          sections: [{
-            items: items
-          }]
-        });
-
-        commands.on('select', function(e) {
-          executeRobotCommand(robotCommands[e.itemIndex]);
-        });
-
-        commands.show();
-      } else {
-        var command = new UI.Card();
-        command.subtitle('No commands found');
-        command.body('Verify server is running');
-        command.show();
-      }
+      commands.show();
+    } else {
+      var command = new UI.Card();
+      command.subtitle("No commands found");
+      command.body("Verify server is running");
+      command.show();
     }
-});
+  }
 
-main.show();
+  function showEvents() {
+    var events = new UI.Card();
+
+    events.title("Events");
+    events.subtitle("Listening to buttons and tap");
+    events.show();
+
+    ["up", "select", "down"].forEach(function(which) {
+      events.on("click", which, publishEvent.bind(null, "button", which));
+    });
+
+    events.on("accelTap", publishEvent.bind(null, "tap", ""));
+  }
+
+  function showAccelerometer() {
+    var card = new UI.Card();
+    card.subtitle("Accelerometer");
+    card.body("Sending data");
+    card.show();
+
+    card.on("accelData", function(e) {
+      var accel = e.accels[0];
+      var data = [accel.x, accel.y, accel.z].join();
+      publishEvent("accel", data);
+    });
+  }
+
+  pollForMessages();
+
+  Pebble.addEventListener("showConfiguration", function() {
+    var options = JSON.stringify({
+      name: Settings.data("name"),
+      host: Settings.data("host"),
+      port: Settings.data("port"),
+      device: Settings.data("device")
+    });
+
+    var url = "http://watchbot.io/configure/index.html?" + encodeURIComponent(options);
+
+    Pebble.openURL(url);
+  });
+
+  Pebble.addEventListener("webviewclosed", function(e) {
+    var options = JSON.parse(decodeURIComponent(e.response));
+
+    if (options.canceled) { return; }
+
+    Settings.data("host", options.host);
+    Settings.data("name", options.name);
+    Settings.data("port", options.port);
+    Settings.data("device", options.device);
+  });
+
+  Accel.init();
+
+  var main = new UI.Menu({
+    sections: [{
+      items: [
+        {
+          title: "Commands",
+          subtitle: "Execute commands"
+        }, {
+          title: "Events",
+          subtitle: "Listen to events"
+        }, {
+          title: "Accelerometer",
+          subtitle: "Get accel info"
+        }
+      ]
+    }]
+  });
+
+  main.on("select", function(event) {
+    switch (event.itemIndex) {
+      case 0:
+        showCommands();
+        break;
+
+      case 1:
+        showEvents();
+        break;
+
+      case 2:
+        showAccelerometer();
+        break;
+    }
+  });
+
+  main.show();
+})();
