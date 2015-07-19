@@ -102,8 +102,7 @@
         // submits values back to the Pebble app
         get("save").addEventListener("click", function() {
           var json = encodeURIComponent(JSON.stringify(options()));
-          // document.location = "pebblejs://close#" + json;
-          document.location = document.location + "?" + json;
+          document.location = "pebblejs://close#" + json;
         });
       })();
     </script>
