@@ -4,7 +4,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
-/* line 10, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 10, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 html {
   font-family: sans-serif;
   /* 1 */
@@ -16,7 +16,7 @@ html {
 /**
  * Remove default margin.
  */
-/* line 20, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 20, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 body {
   margin: 0; }
 
@@ -27,7 +27,7 @@ body {
  * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
  * Correct `block` display not defined for `main` in IE 11.
  */
-/* line 44, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 33, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 article,
 aside,
 details,
@@ -46,7 +46,7 @@ summary {
  * 1. Correct `inline-block` display not defined in IE 8/9.
  * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
  */
-/* line 56, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 53, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 audio,
 canvas,
 progress,
@@ -60,7 +60,7 @@ video {
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
-/* line 66, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 66, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 audio:not([controls]) {
   display: none;
   height: 0; }
@@ -69,7 +69,7 @@ audio:not([controls]) {
  * Address `[hidden]` styling not present in IE 8/9/10.
  * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
  */
-/* line 77, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 76, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 [hidden],
 template {
   display: none; }
@@ -79,14 +79,14 @@ template {
 /**
  * Remove the gray background color from active links in IE 10.
  */
-/* line 88, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 88, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 a {
   background: transparent; }
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
-/* line 97, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 96, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 a:active,
 a:hover {
   outline: 0; }
@@ -96,14 +96,14 @@ a:hover {
 /**
  * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
  */
-/* line 108, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 108, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 abbr[title] {
   border-bottom: 1px dotted; }
 
 /**
  * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
  */
-/* line 117, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 116, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 b,
 strong {
   font-weight: bold; }
@@ -111,7 +111,7 @@ strong {
 /**
  * Address styling not present in Safari and Chrome.
  */
-/* line 125, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 125, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 dfn {
   font-style: italic; }
 
@@ -119,7 +119,7 @@ dfn {
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari, and Chrome.
  */
-/* line 134, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 134, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 h1 {
   font-size: 2em;
   margin: 0.67em 0; }
@@ -127,7 +127,7 @@ h1 {
 /**
  * Address styling not present in IE 8/9.
  */
-/* line 143, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 143, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 mark {
   background: #ff0;
   color: #000; }
@@ -135,14 +135,14 @@ mark {
 /**
  * Address inconsistent and variable font size in all browsers.
  */
-/* line 152, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 152, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 small {
   font-size: 80%; }
 
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
-/* line 161, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 160, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 sub,
 sup {
   font-size: 75%;
@@ -150,11 +150,11 @@ sup {
   position: relative;
   vertical-align: baseline; }
 
-/* line 168, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 168, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 sup {
   top: -0.5em; }
 
-/* line 172, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 172, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 sub {
   bottom: -0.25em; }
 
@@ -163,14 +163,14 @@ sub {
 /**
  * Remove border when inside `a` element in IE 8/9/10.
  */
-/* line 183, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 183, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 img {
   border: 0; }
 
 /**
  * Correct overflow not hidden in IE 9/10/11.
  */
-/* line 191, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 191, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 svg:not(:root) {
   overflow: hidden; }
 
@@ -179,14 +179,14 @@ svg:not(:root) {
 /**
  * Address margin not present in IE 8/9 and Safari.
  */
-/* line 202, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 202, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 figure {
   margin: 1em 40px; }
 
 /**
  * Address differences between Firefox and other browsers.
  */
-/* line 210, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 210, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -195,14 +195,14 @@ hr {
 /**
  * Contain overflow in all browsers.
  */
-/* line 220, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 220, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 pre {
   overflow: auto; }
 
 /**
  * Address odd `em`-unit font size rendering in all browsers.
  */
-/* line 231, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 228, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 code,
 kbd,
 pre,
@@ -222,7 +222,7 @@ samp {
  * 2. Correct font properties not being inherited.
  * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
-/* line 255, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 251, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 button,
 input,
 optgroup,
@@ -238,7 +238,7 @@ textarea {
 /**
  * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
-/* line 265, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 265, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 button {
   overflow: visible; }
 
@@ -248,7 +248,7 @@ button {
  * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
  * Correct `select` style inheritance in Firefox.
  */
-/* line 277, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 276, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 button,
 select {
   text-transform: none; }
@@ -260,7 +260,7 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-/* line 292, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 289, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -273,7 +273,7 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-/* line 302, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 301, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 button[disabled],
 html input[disabled] {
   cursor: default; }
@@ -281,7 +281,7 @@ html input[disabled] {
 /**
  * Remove inner padding and border in Firefox 4+.
  */
-/* line 311, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 310, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -291,7 +291,7 @@ input::-moz-focus-inner {
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-/* line 321, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 321, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 input {
   line-height: normal; }
 
@@ -302,7 +302,7 @@ input {
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10.
  */
-/* line 334, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 333, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -315,7 +315,7 @@ input[type="radio"] {
  * `font-size` values of the `input`, it causes the cursor style of the
  * decrement button to change from `default` to `text`.
  */
-/* line 346, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 345, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   height: auto; }
@@ -325,7 +325,7 @@ input[type="number"]::-webkit-outer-spin-button {
  * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
  *    (include `-moz` to future-proof).
  */
-/* line 356, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 356, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -339,7 +339,7 @@ input[type="search"] {
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-/* line 370, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 369, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
@@ -347,7 +347,7 @@ input[type="search"]::-webkit-search-decoration {
 /**
  * Define consistent border, margin, and padding.
  */
-/* line 378, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 378, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
@@ -357,7 +357,7 @@ fieldset {
  * 1. Correct `color` not being inherited in IE 8/9/10/11.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
-/* line 389, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 389, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 legend {
   border: 0;
   /* 1 */
@@ -367,7 +367,7 @@ legend {
 /**
  * Remove default vertical scrollbar in IE 8/9/10/11.
  */
-/* line 398, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 398, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 textarea {
   overflow: auto; }
 
@@ -375,7 +375,7 @@ textarea {
  * Don't inherit the `font-weight` (applied by a rule above).
  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
-/* line 407, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 407, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 optgroup {
   font-weight: bold; }
 
@@ -384,41 +384,43 @@ optgroup {
 /**
  * Remove most spacing between table cells.
  */
-/* line 418, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 418, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* line 424, /home/ron/Development/watchbot/source/stylesheets/_normalize.css */
+/* line 423, /Users/stewart/dev/watchbot/source/stylesheets/_normalize.css */
 td,
 th {
   padding: 0; }
 
-/* line 2, /home/ron/.rvm/gems/ruby-2.1.5@robotops/gems/neat-1.5.1/app/assets/stylesheets/grid/_grid.scss */
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+/* line 4, /Users/stewart/dev/watchbot/vendor/bundle/ruby/2.1.0/gems/neat-1.7.2/app/assets/stylesheets/grid/_box-sizing.scss */
+html {
   box-sizing: border-box; }
 
-/* line 39, /home/ron/Development/watchbot/source/stylesheets/style.css.scss */
+/* line 9, /Users/stewart/dev/watchbot/vendor/bundle/ruby/2.1.0/gems/neat-1.7.2/app/assets/stylesheets/grid/_box-sizing.scss */
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+/* line 39, /Users/stewart/dev/watchbot/source/stylesheets/style.css.scss */
 html, body {
   height: 100%; }
 
-/* line 43, /home/ron/Development/watchbot/source/stylesheets/style.css.scss */
+/* line 43, /Users/stewart/dev/watchbot/source/stylesheets/style.css.scss */
 body {
   font-family: 'Open Sans', sans-serif;
-  color: #3e3e3e;
-  background: #992d2d; }
+  color: #3E3E3E;
+  background: #992D2D; }
 
-/* line 49, /home/ron/Development/watchbot/source/stylesheets/style.css.scss */
+/* line 49, /Users/stewart/dev/watchbot/source/stylesheets/style.css.scss */
 a {
-  color: #df9060;
+  color: #DF9060;
   text-decoration: none; }
-  /* line 52, /home/ron/Development/watchbot/source/stylesheets/style.css.scss */
+  /* line 52, /Users/stewart/dev/watchbot/source/stylesheets/style.css.scss */
   a:hover {
-    color: #a77252; }
+    color: #A77252; }
 
-/* line 57, /home/ron/Development/watchbot/source/stylesheets/style.css.scss */
+/* line 57, /Users/stewart/dev/watchbot/source/stylesheets/style.css.scss */
 .container {
   max-width: 68em;
   margin-left: auto;
@@ -426,71 +428,71 @@ a {
   max-width: 48em;
   position: relative;
   padding: 0 20px; }
-  /* line 15, /home/ron/.rvm/gems/ruby-2.1.5@robotops/gems/bourbon-3.2.3/app/assets/stylesheets/addons/_clearfix.scss */
-  .container:after {
+  /* line 20, /Users/stewart/dev/watchbot/vendor/bundle/ruby/2.1.0/gems/bourbon-4.2.3/app/assets/stylesheets/addons/_clearfix.scss */
+  .container::after {
+    clear: both;
     content: "";
-    display: table;
-    clear: both; }
+    display: table; }
 
-/* line 1, /home/ron/Development/watchbot/source/stylesheets/elements/_header.scss */
+/* line 1, /Users/stewart/dev/watchbot/source/stylesheets/elements/_header.scss */
 header {
-  background-color: #992d2d;
+  background-color: #992D2D;
   border-bottom: 5px solid #ededed;
   color: #fff;
   text-align: center;
   padding: 40px 0;
   overflow: hidden; }
-  /* line 9, /home/ron/Development/watchbot/source/stylesheets/elements/_header.scss */
+  /* line 9, /Users/stewart/dev/watchbot/source/stylesheets/elements/_header.scss */
   header h3 {
     margin: 0;
     font-size: 24px; }
   @media screen and (max-width: 480px) {
-    /* line 17, /home/ron/Development/watchbot/source/stylesheets/elements/_header.scss */
+    /* line 17, /Users/stewart/dev/watchbot/source/stylesheets/elements/_header.scss */
     header .logo img {
       width: 80%; } }
 
-/* line 1, /home/ron/Development/watchbot/source/stylesheets/elements/_footer.scss */
+/* line 1, /Users/stewart/dev/watchbot/source/stylesheets/elements/_footer.scss */
 footer {
-  background-color: #992d2d;
+  background-color: #992D2D;
   clear: both;
   color: #fff;
   text-align: center; }
-  /* line 7, /home/ron/Development/watchbot/source/stylesheets/elements/_footer.scss */
+  /* line 7, /Users/stewart/dev/watchbot/source/stylesheets/elements/_footer.scss */
   footer p {
     margin-top: 25px; }
 
-/* line 12, /home/ron/Development/watchbot/source/stylesheets/elements/_footer.scss */
+/* line 12, /Users/stewart/dev/watchbot/source/stylesheets/elements/_footer.scss */
 .thg-logo {
   width: 189px;
   height: 29px;
   display: inline-block;
   background: url(../images/logo-thg.png) no-repeat top left; }
-  /* line 17, /home/ron/Development/watchbot/source/stylesheets/elements/_footer.scss */
+  /* line 17, /Users/stewart/dev/watchbot/source/stylesheets/elements/_footer.scss */
   .thg-logo span {
     display: none; }
 
-/* line 1, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+/* line 1, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
 .hero {
   background: #f7f5f3 url("/images/pebble-watch-art.png") center bottom no-repeat;
   min-height: 800px;
   overflow: hidden; }
-  /* line 6, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+  /* line 6, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
   .hero p {
     font-size: 19px;
     font-weight: 600;
     margin: 50px 0 30px 0; }
-  /* line 12, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+  /* line 12, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
   .hero pre {
     background: #F8F8F8;
     border: 1px solid #979797;
     padding: 20px 10px;
     font-size: 14px; }
-  /* line 19, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+  /* line 19, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
   .hero .actions {
     text-align: center; }
-  /* line 23, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+  /* line 23, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
   .hero .action {
-    background: #a0ce69;
+    background: #A0CE69;
     border: 1px solid #979797;
     color: #2A2D26;
     font-size: 20px;
@@ -499,24 +501,24 @@ footer {
     box-shadow: inset 0px 1px 1px 0px #C7E6A3;
     display: inline-block;
     margin: 8px 3px; }
-    /* line 35, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+    /* line 35, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
     .hero .action:hover {
       box-shadow: none;
       background: #b8db8f; }
 
-/* line 42, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+/* line 42, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
 .how-it-works {
-  background: #fdf9ef url("/images/bg-infographic.png") center bottom repeat-x;
+  background: #FDF9EF url("/images/bg-infographic.png") center bottom repeat-x;
   border-top: 5px solid #F5F5F5; }
-  /* line 46, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+  /* line 46, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
   .how-it-works .title {
     text-align: center;
     margin: 50px 0 0px 0;
     color: #505050; }
-  /* line 52, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+  /* line 52, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
   .how-it-works .container {
     padding: 0; }
-  /* line 56, /home/ron/Development/watchbot/source/stylesheets/_home.scss */
+  /* line 56, /Users/stewart/dev/watchbot/source/stylesheets/_home.scss */
   .how-it-works img {
     width: 100%;
     padding-bottom: 11px; }
